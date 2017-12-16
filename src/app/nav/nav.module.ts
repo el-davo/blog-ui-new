@@ -9,11 +9,12 @@ import {NavEpics} from './nav.epics';
 import {NgReduxFormModule} from '@angular-redux/form';
 import {FormsModule} from '@angular/forms';
 import {UserModule} from '../user/user.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
+    SharedModule,
     FormsModule,
     NgReduxFormModule,
     UserModule
