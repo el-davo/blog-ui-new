@@ -8,9 +8,6 @@ export class NavActions {
   static SHOW_LOGIN_MODAL = 'nav/SHOW_LOGIN_MODAL';
   static HIDE_LOGIN_MODAL = 'nav/HIDE_LOGIN_MODAL';
 
-  static SHOW_SIGNUP_MODAL = 'nav/SHOW_SIGNUP_MODAL';
-  static HIDE_SIGNUP_MODAL = 'nav/HIDE_SIGNUP_MODAL';
-
   hideAllModals() {
     return {type: NavActions.HIDE_ALL_MODALS};
   }
@@ -21,13 +18,5 @@ export class NavActions {
 
   hideLoginModal() {
     return {type: NavActions.HIDE_LOGIN_MODAL};
-  }
-
-  showSignupModal() {
-    return {type: NavActions.SHOW_SIGNUP_MODAL};
-  }
-
-  hideSignUpModal() {
-    return {type: NavActions.HIDE_SIGNUP_MODAL};
   }
 }

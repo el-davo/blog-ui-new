@@ -10,7 +10,7 @@ export class UserService {
   }
 
   signup({username, password, email}: SignupForm) {
-    return this.http.post(`${environment.gateway}/users`, {username, password, email});
+    return this.http.post(`${environment.blogApi}/users`, {username, password, email});
   }
 
 }

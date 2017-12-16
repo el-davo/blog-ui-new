@@ -8,10 +8,6 @@ export const navReducer = (state: NavState = navState, action): NavState => {
       return {...state, showLoginModal: true};
     case NavActions.HIDE_LOGIN_MODAL:
       return {...state, showLoginModal: false};
-    case NavActions.SHOW_SIGNUP_MODAL:
-      return {...state, showSignupModal: true};
-    case NavActions.HIDE_SIGNUP_MODAL:
-      return {...state, showSignupModal: false};
     case UserActions.SIGNUP_SUCCESS:
       return {...state, showSignupModal: false};
     default:

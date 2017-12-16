@@ -1,0 +1,7 @@
+<mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-tile
+    *ngFor="let article of (landing$ | async)?.articles"
+    colspan="2">
+    <app-article-card [article]="article"></app-article-card>
+  </mat-grid-tile>
+</mat-grid-list>
