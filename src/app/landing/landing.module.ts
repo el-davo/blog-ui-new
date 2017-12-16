@@ -6,13 +6,14 @@ import {ArticlesComponent} from './articles/articles.component';
 import {LandingActions} from './landing.actions';
 import {LandingEpics} from './landing.epics';
 import {ArticleCardComponent} from './articles/article-card/article-card.component';
-import {MaterialModule} from '../material/material.module';
 import {SharedModule} from '../shared/shared.module';
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   declarations: [
     LandingComponent,

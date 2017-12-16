@@ -23,4 +23,8 @@ export class ArticlesService {
 
     return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`);
   }
+
+  fetchArticle(articleId: string): Observable<Article> {
+    return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`);
+  }
 }
