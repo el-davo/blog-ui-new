@@ -6,8 +6,6 @@ import {NavActions} from './nav.actions';
 import {NavLoginComponent} from './nav-login/nav-login.component';
 import {LoginModalComponent} from './nav-login/login-modal/login-modal.component';
 import {NavEpics} from './nav.epics';
-import {NavSignupComponent} from './nav-signup/nav-signup.component';
-import {SignupModalComponent} from './nav-signup/signup-modal/signup-modal.component';
 import {NgReduxFormModule} from '@angular-redux/form';
 import {FormsModule} from '@angular/forms';
 import {UserModule} from '../user/user.module';
@@ -23,9 +21,7 @@ import {UserModule} from '../user/user.module';
   declarations: [
     NavComponent,
     NavLoginComponent,
-    LoginModalComponent,
-    NavSignupComponent,
-    SignupModalComponent
+    LoginModalComponent
   ],
   exports: [
     NavComponent
@@ -35,8 +31,7 @@ import {UserModule} from '../user/user.module';
     NavEpics
   ],
   entryComponents: [
-    LoginModalComponent,
-    SignupModalComponent
+    LoginModalComponent
   ]
 })
 export class NavModule {

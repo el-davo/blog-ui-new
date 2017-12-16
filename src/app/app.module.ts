@@ -18,6 +18,9 @@ import {NavModule} from './nav/nav.module';
 import {NavEpics} from './nav/nav.epics';
 import {UserEpics} from './user/user.epics';
 import {HttpClientModule} from '@angular/common/http';
+import {LandingModule} from './landing/landing.module';
+import {LandingEpics} from './landing/landing.epics';
+import {ArticlesModule} from './articles/articles.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import {HttpClientModule} from '@angular/common/http';
     NgReduxModule,
     NgReduxRouterModule,
     NgReduxFormModule,
-    NavModule
+    NavModule,
+    LandingModule,
+    ArticlesModule
   ],
   providers: [],
   bootstrap: [
@@ -44,14 +49,15 @@ export class AppModule {
   constructor(private ngRedux: NgRedux<any>,
               ngReduxRouter: NgReduxRouter,
               private navEpics: NavEpics,
-              private userEpics: UserEpics) {
+              private userEpics: UserEpics,
+              private landingEpics: LandingEpics) {
 
     const epics = combineEpics(
       this.navEpics.showLoginModal,
-      this.navEpics.showSignupModal,
       this.navEpics.hideAllModals,
       this.userEpics.login,
-      this.userEpics.signup
+      this.userEpics.signup,
+      this.landingEpics.fetchArticles
     );
 
     const middleware = [
