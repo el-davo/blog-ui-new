@@ -10,7 +10,6 @@ import {NgReduxRouterModule, NgReduxRouter} from '@angular-redux/router';
 import {createEpicMiddleware, combineEpics} from 'redux-observable';
 import * as reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import * as persistState from 'redux-localstorage'
-import {NgReduxFormModule} from '@angular-redux/form';
 import {environment} from '../environments/environment';
 import {AppComponent} from './app.component';
 import {routes} from './routes';
@@ -36,7 +35,6 @@ import {ViewArticleModule} from './view-article/view-article.module';
     BrowserAnimationsModule,
     NgReduxModule,
     NgReduxRouterModule,
-    NgReduxFormModule,
     NavModule,
     LandingModule,
     ArticlesModule,

@@ -4,4 +4,4 @@ memory: 128M
 buildpack: nodejs_buildpack
 command: node ./dist/server.js
 env:
-    NODE_ENV: production
+    OPTIMIZE_MEMORY : true
