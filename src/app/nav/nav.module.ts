@@ -8,10 +8,13 @@ import {NavEpics} from './nav.epics';
 import {FormsModule} from '@angular/forms';
 import {UserModule} from '../user/user.module';
 import {SharedModule} from '../shared/shared.module';
+import {NavHomeComponent} from './nav-home/nav-home.component';
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    CoreModule,
     SharedModule,
     FormsModule,
     UserModule
@@ -19,7 +22,8 @@ import {SharedModule} from '../shared/shared.module';
   declarations: [
     NavComponent,
     NavLoginComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    NavHomeComponent
   ],
   exports: [
     NavComponent
