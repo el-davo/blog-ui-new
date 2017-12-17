@@ -4,11 +4,11 @@ import {ViewArticleComponent} from './view-article/view-article.component';
 export const routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/',
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: '',
     component: LandingComponent
   },
   {
