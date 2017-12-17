@@ -66,10 +66,13 @@ export class AppModule {
     );
 
     const middleware = [
-      createEpicMiddleware(epics),
-      createLogger(),
-      reduxImmutableStateInvariant.default()
+      createEpicMiddleware(epics)
     ];
+
+    if (!environment.production) {
+      middleware.push(createLogger());
+      middleware.push(reduxImmutableStateInvariant.default());
+    }
 
     const enhancers = [];
 

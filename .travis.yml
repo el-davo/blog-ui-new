@@ -9,12 +9,12 @@ cache:
   yarn: true
 deploy:
   provider: cloudfoundry
-  api: https://api.run.pivotal.io
+  api: api.run.pivotal.io
   username: david.ahern26@gmail.com
   password:
-    secure: Vvs7T6VOdIsg4visVZZEskJgE3TJ/6PC3IHmTI8T1/g68xKWbqJuZI6TGVt/XvHaSTsoSr5WeQLqxMcEUdzt9uhjKPNDqKZz9tCDRDp3CMSzdTABmXNT4oyD8DzWpbtgeolxIQ+i8NjQ3fuF/zbgC5SdtLLvxJStM/QFVgZ/TpRMMoOnZLss2BDibHfQcj71jwRyJKR0AcyfNpdBSR44iEZ3WwXx6G8H9+cwbZi3XIwmx/HJA+7PMrbxmCzpEdnnPACl3WgTIGszqs+VzqPYEVpqygtSBlJkAcvIhV7N/XGl7cM/zN+7m6NsWOge0Gq6B2WZwBfsPmTFZpu2oSaToJBvlOwsLPzx66tnhxpiZl5CE+1vnPZ9AXLemWMI+0HiDkNLLtLpaVaSSiVJPGE1m7KgpOkn8jVoiZ9FJ/20Pk7HpiD3oM5s1iTc84JHtljny9z2sSuXAO97nYcGAZ5OouZ85RY8o5JpWjLL8FhMCPR4N3tpxDjRiTwfgqhgeqLk3BBWdOr968fLk4tToPXrxpGQN6gBp1RvO5+JNO9bJwlC0foACMGdP9VHZyu1J6Op9hCAlULNcuXV5VYmMmHWvRR+VBcJ03Y2Q9Szx5dIsrVaGhxvB301RV5K7RVYT8woDmpdJvGJ2WM+1hTPWGyKkFKZ1evL+pz/ivIvL15x3e4=
+    secure: AbyN1jK76TVCqdUMh1ebQjFB+mUByZg+h2JqItpwzc/JLujXQEYU1i2EXbK7uBZySioO23HoSLz8dz6U2rSKBNjsBK8XTCcQkxmN7UX1i4v91PeVlS9ALZUV2hw3M2c4R4ISbfh/lG+aLQisCHRKAJ8g7JXppbTkL2Z+oiXLVhHIIBra+7qRZqiUixs41RnQMORWRZmLYwwYawGux1uCEZckjTYKy/H4J9iev726hzFY2h4iODYdiZivY7D9vUJ0cyakkoG8ztDg/CttFl6EyrmN5PSw7QX8I1jDVtDPgn5EIKgRfgJ1ioqv/+rQHKzKbDgNpmQSm1PQdPwi7gdQE2KRul0aHyBXKrhE8qzgMCo+HgzyfAZADBG7zg92+ArOgkdO5UNJTP71mTfUcGoobWagtFwh9Xb5jUedPHprc4YeqaInMg9F6eMqkHKiXs+i+5L/G0uRw/dQIYhOfHrxHaJLx1c0A+dZ0xUGpzIPM8+g76aE4KricawJGn4Ul96gd/KbJE3ZeFfSDwtDgZlvdjTcnIqprxRfd8S+VixDxjbQmTt11oKPngOwP+cG/vWlN8pNJY+aXPHxnPLwewkO/8MwpLtDecC0fM99GZJLCg0+Mi178OID9mPtR0fJ7CzJiyPeZY8Qj4mlPnjShm3BFX8EVndxbE3QmwPiX5zZV1k=
   organization: thor
   space: prod
   on:
-    repo: el-davo/retro-ui
+    repo: el-davo/blog-ui-new
     branch: master
