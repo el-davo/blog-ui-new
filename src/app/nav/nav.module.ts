@@ -10,10 +10,13 @@ import {NgReduxFormModule} from '@angular-redux/form';
 import {FormsModule} from '@angular/forms';
 import {UserModule} from '../user/user.module';
 import {SharedModule} from '../shared/shared.module';
+import {NavHomeComponent} from './nav-home/nav-home.component';
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    CoreModule,
     SharedModule,
     FormsModule,
     NgReduxFormModule,
@@ -22,7 +25,8 @@ import {SharedModule} from '../shared/shared.module';
   declarations: [
     NavComponent,
     NavLoginComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    NavHomeComponent
   ],
   exports: [
     NavComponent
