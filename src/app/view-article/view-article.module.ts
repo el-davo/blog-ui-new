@@ -4,10 +4,14 @@ import {ViewArticleComponent} from './view-article.component';
 import {ViewArticleEpics} from './view-article.epics';
 import {ViewArticleActions} from './view-article.actions';
 import {ArticleRenderComponent} from './article-render/article-render.component';
+import {CoreModule} from '../core/core.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    CoreModule,
+    SharedModule
   ],
   declarations: [
     ViewArticleComponent,

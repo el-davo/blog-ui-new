@@ -1,13 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {MarkdownModule} from 'ngx-markdown';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MarkdownModule.forRoot()
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    MarkdownModule
   ],
   declarations: []
 })
