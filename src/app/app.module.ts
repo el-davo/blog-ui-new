@@ -6,7 +6,6 @@ import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {rootReducer} from './root.reducer';
 import {FormsModule} from '@angular/forms';
-import {NgReduxRouterModule, NgReduxRouter} from '@angular-redux/router';
 import {createEpicMiddleware, combineEpics} from 'redux-observable';
 import * as reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import * as persistState from 'redux-localstorage'
@@ -34,7 +33,6 @@ import {ViewArticleModule} from './view-article/view-article.module';
     FormsModule,
     BrowserAnimationsModule,
     NgReduxModule,
-    NgReduxRouterModule,
     NavModule,
     LandingModule,
     ArticlesModule,
@@ -48,7 +46,6 @@ import {ViewArticleModule} from './view-article/view-article.module';
 export class AppModule {
 
   constructor(private ngRedux: NgRedux<any>,
-              ngReduxRouter: NgReduxRouter,
               private navEpics: NavEpics,
               private userEpics: UserEpics,
               private landingEpics: LandingEpics,
@@ -79,7 +76,6 @@ export class AppModule {
     }
 
     ngRedux.configureStore(rootReducer, {}, middleware, enhancers);
-    ngReduxRouter.initialize();
   }
 
 }
