@@ -5,3 +5,4 @@ buildpack: nodejs_buildpack
 command: node ./dist/server.js
 env:
     OPTIMIZE_MEMORY : true
+    NODE_ENV: production
