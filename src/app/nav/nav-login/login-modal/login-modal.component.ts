@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import {dispatch} from '@angular-redux/store';
+import {dispatch, select} from '@angular-redux/store';
 import {NavActions} from '../../nav.actions';
 import {UserActions} from '../../../user/user.actions';
+import {Observable} from 'rxjs/Observable';
+import {UserState} from '../../../user/user.state';
 
 @Component({
   selector: 'app-login-modal',
@@ -10,6 +12,8 @@ import {UserActions} from '../../../user/user.actions';
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent {
+
+  @select('user') user$: Observable<UserState>;
 
   constructor(private userActions: UserActions,
               private navActions: NavActions,
@@ -25,5 +29,15 @@ export class LoginModalComponent {
   @dispatch()
   login() {
     return this.userActions.login();
+  }
+
+  @dispatch()
+  updateLoginUsername(username: string) {
+    return this.userActions.updateLoginUsername(username);
+  }
+
+  @dispatch()
+  updateLoginPassword(password: string) {
+    return this.userActions.updateLoginPassword(password);
   }
 }

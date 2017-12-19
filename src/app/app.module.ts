@@ -55,7 +55,6 @@ export class AppModule {
       this.navEpics.showLoginModal,
       this.navEpics.hideAllModals,
       this.userEpics.login,
-      this.userEpics.signup,
       this.landingEpics.fetchArticles,
       this.viewArticleEpics.fetchArticle
     );
