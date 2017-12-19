@@ -15,7 +15,9 @@ export class NavEpics {
   showLoginModal = action$ => {
     return action$.ofType(NavActions.SHOW_LOGIN_MODAL)
       .map(() => {
-        this.dialog.open(LoginModalComponent).afterClosed();
+        this.dialog.open(LoginModalComponent, {
+          width: '600px'
+        }).afterClosed();
 
         return {type: 'UNKNOWN'};
       });

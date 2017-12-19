@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {SignupForm} from './user.state';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
@@ -9,8 +9,8 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  signup({username, password, email}: SignupForm) {
-    return this.http.post(`${environment.blogApi}/users`, {username, password, email});
+  login({username, password}: { username: string, password: string }): Observable<any> {
+    return this.http.post(`${environment.blogApi}/users/login`, {username, password});
   }
 
 }

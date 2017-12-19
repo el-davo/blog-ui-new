@@ -17,24 +17,17 @@ export class UserEpics {
               private userService: UserService) {
   }
 
-  login = action$ => {
+  login = (action$, store) => {
     return action$.ofType(UserActions.LOGIN)
-      .map(() => {
-        return {type: this.userActions.loginSuccess()};
-      });
-  };
-
-  signup = (action$, store) => {
-    return action$.ofType(UserActions.SIGNUP)
       .mergeMap(() => {
-        const {signupForm} = store.getState().user;
+        const {loginForm} = store.getState().user;
 
-        return this.userService.signup(signupForm)
+        return this.userService.login(loginForm)
           .mergeMap((user: User) => Observable.concat(
-            Observable.of(this.userActions.signupSuccess(user)),
+            Observable.of(this.userActions.loginSuccess(user)),
             Observable.of(this.navActions.hideAllModals())
-          )
-            .catch(() => Observable.of(this.userActions.signupFail())));
+          ))
+          .catch(() => Observable.of(this.userActions.loginFail()));
       });
   };
 

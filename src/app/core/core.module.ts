@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MarkdownModule} from 'ngx-markdown';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   imports: [
@@ -10,9 +11,12 @@ import {MarkdownModule} from 'ngx-markdown';
   ],
   exports: [
     RouterModule,
-    MarkdownModule
+    MarkdownModule,
+    LoadingComponent
   ],
-  declarations: []
+  declarations: [
+    LoadingComponent
+  ]
 })
 export class CoreModule {
 }
