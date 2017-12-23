@@ -21,6 +21,8 @@ import {LandingEpics} from './landing/landing.epics';
 import {ArticlesModule} from './articles/articles.module';
 import {ViewArticleEpics} from './view-article/view-article.epics';
 import {ViewArticleModule} from './view-article/view-article.module';
+import {AlgorithmsModule} from './algorithms/algorithms.module';
+import {AlgorithmsEpics} from './algorithms/algorithms.epics';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import {ViewArticleModule} from './view-article/view-article.module';
     NavModule,
     LandingModule,
     ArticlesModule,
-    ViewArticleModule
+    ViewArticleModule,
+    AlgorithmsModule
   ],
   providers: [],
   bootstrap: [
@@ -49,14 +52,16 @@ export class AppModule {
               private navEpics: NavEpics,
               private userEpics: UserEpics,
               private landingEpics: LandingEpics,
-              private viewArticleEpics: ViewArticleEpics) {
+              private viewArticleEpics: ViewArticleEpics,
+              private algorithmsEpics: AlgorithmsEpics) {
 
     const epics = combineEpics(
       this.navEpics.showLoginModal,
       this.navEpics.hideAllModals,
       this.userEpics.login,
       this.landingEpics.fetchArticles,
-      this.viewArticleEpics.fetchArticle
+      this.viewArticleEpics.fetchArticle,
+      this.algorithmsEpics.start
     );
 
     const middleware = [

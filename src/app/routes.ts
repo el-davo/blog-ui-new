@@ -1,5 +1,6 @@
 import {LandingComponent} from './landing/landing.component';
 import {ViewArticleComponent} from './view-article/view-article.component';
+import {AlgorithmsComponent} from './algorithms/algorithms.component';
 
 export const routes = [
   {
@@ -14,5 +15,9 @@ export const routes = [
   {
     path: 'article/:articleId',
     component: ViewArticleComponent
+  },
+  {
+    path: 'algorithms',
+    component: AlgorithmsComponent
   }
 ];
