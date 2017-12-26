@@ -1,4 +1,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~@ngx-share/button/styles/share-buttons.css';
+@import '~@ngx-share/button/styles/themes/circles/circles-dark-theme.css';
 
 body {
   overflow-x: hidden;

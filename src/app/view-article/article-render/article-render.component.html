@@ -7,6 +7,11 @@
     </mat-card-header>
     <mat-card-content>
       <markdown [data]="(article$ | async)?.content"></markdown>
+
+      <br/>
+      <br/>
+
+      <app-share></app-share>
     </mat-card-content>
   </mat-card>
 </div>
