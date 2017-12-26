@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {select} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
 import {Article} from '../../landing/landing.state';

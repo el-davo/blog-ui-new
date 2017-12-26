@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {ShareButtons} from '@ngx-share/core';
+import {Article} from '../../landing/landing.state';
+import {select} from '@angular-redux/store';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-share',
@@ -8,7 +10,9 @@ import {ShareButtons} from '@ngx-share/core';
 })
 export class ShareComponent {
 
-  constructor(public share: ShareButtons) {
+  @select(['viewArticle', 'article']) article$: Observable<Article>;
+
+  constructor() {
   }
 
 }
