@@ -3,7 +3,8 @@ export const algorithmState: AlgorithmsState = {
   problemSize: 15,
   sleepTime: 100,
   problem: [],
-  bubbleNext: []
+  bubbleNext: [],
+  quickSortNext: []
 };
 
 export interface AlgorithmsState {
@@ -12,9 +13,11 @@ export interface AlgorithmsState {
   problemSize: number;
   problem: Problem[];
   bubbleNext: Problem[];
+  quickSortNext: Problem[];
 }
 
 export interface Problem {
+  id: string;
   name: number;
   value: number;
 }

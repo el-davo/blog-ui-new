@@ -4,12 +4,14 @@ import {CommonModule} from '@angular/common';
 import {AlgorithmsComponent} from './algorithms.component';
 import {AlgorithmsActions} from './algorithms.actions';
 import {AlgorithmsEpics} from './algorithms.epics';
-import { ChartComponent } from './chart/chart.component';
+import {ChartComponent} from './chart/chart.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgxChartsModule
+    NgxChartsModule,
+    SharedModule
   ],
   declarations: [
     AlgorithmsComponent,

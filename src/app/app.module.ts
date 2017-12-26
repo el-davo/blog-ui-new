@@ -61,7 +61,8 @@ export class AppModule {
       this.userEpics.login,
       this.landingEpics.fetchArticles,
       this.viewArticleEpics.fetchArticle,
-      this.algorithmsEpics.start
+      // this.algorithmsEpics.startBubbleSort,
+      this.algorithmsEpics.startQuickSort
     );
 
     const middleware = [

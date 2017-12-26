@@ -1,3 +1,18 @@
 <button (click)="start()">Start</button>
 
-<app-chart [problem]="(algorithms$ | async)?.bubbleNext"></app-chart>
+<div fxFlex fxLayout="row" fxLayoutWrap fxLayoutAlign="start start">
+  <div fxFlex="25"
+       fxFlex.xs="100"
+       fxFlex.sm="50"
+       fxFlex.md="25"
+       fxFlex.lg="25">
+    <app-chart [problem]="(algorithms$ | async)?.bubbleNext"></app-chart>
+  </div>
+  <div fxFlex="25"
+       fxFlex.xs="100"
+       fxFlex.sm="50"
+       fxFlex.md="25"
+       fxFlex.lg="25">
+    <app-chart [problem]="(algorithms$ | async)?.quickSortNext"></app-chart>
+  </div>
+</div>
