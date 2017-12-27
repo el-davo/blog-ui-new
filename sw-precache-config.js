@@ -12,5 +12,14 @@ module.exports = {
   "runtimeCaching": [{
     urlPattern: /^https:\/\/prod-blog-backend.cfapps.io\/.*/,
     handler: 'networkFirst'
+  }, {
+    urlPattern: /^https:\/\/fonts.googleapis.com\/.*/,
+    handler: 'networkFirst'
+  }, {
+    urlPattern: /^https:\/\/ajax.cloudflare.com\/.*/,
+    handler: 'networkFirst'
+  }, {
+    urlPattern: /^https:\/\/s3-eu-west-1.amazonaws.com\/.*/,
+    handler: 'networkFirst'
   }]
 };
