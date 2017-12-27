@@ -1,7 +1,7 @@
 <div class="wrapper">
   <mat-card>
     <mat-card-header>
-      <img mat-card-avatar [src]="(article$ | async)?.imgUrl">
+      <img mat-card-avatar [src]="(article$ | async)?.imgUrl" *ngIf="(article$ | async)?.imgUrl">
       <mat-card-title>{{(article$ | async)?.name}}</mat-card-title>
       <mat-card-subtitle>{{(article$ | async)?.modified | date:'mediumDate'}}</mat-card-subtitle>
     </mat-card-header>
