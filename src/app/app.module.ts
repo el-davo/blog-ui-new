@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgReduxModule, NgRedux} from '@angular-redux/store';
 import {createLogger} from 'redux-logger';
@@ -28,10 +28,11 @@ import {ViewArticleModule} from './view-article/view-article.module';
   ],
   imports: [
     RouterModule.forRoot(routes),
-    BrowserModule.withServerTransition({appId: 'retro'}),
+    BrowserModule.withServerTransition({appId: 'blog'}),
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    BrowserTransferStateModule,
     NgReduxModule,
     NavModule,
     LandingModule,
