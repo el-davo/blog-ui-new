@@ -11,7 +11,7 @@ module.exports = {
   ],
   "runtimeCaching": [{
     urlPattern: /^https:\/\/prod-blog-backend.cfapps.io\/.*/,
-    handler: 'networkFirst'
+    handler: 'fastest'
   }, {
     urlPattern: /^https:\/\/fonts.googleapis.com\/.*/,
     handler: 'networkFirst'
