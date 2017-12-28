@@ -1,0 +1,43 @@
+{
+  "name": "el-davos blog",
+  "short_name": "el-davos blog",
+  "icons": [
+    {
+      "src": "assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image\/png"
+    },
+    {
+      "src": "assets/icons/android-chrome-384x384.png",
+      "sizes": "256x256",
+      "type": "image\/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon.png",
+      "sizes": "256x256",
+      "type": "image\/png"
+    },
+    {
+      "src": "assets/icons/favicon-16x16.png",
+      "sizes": "256x256",
+      "type": "image\/png"
+    },
+    {
+      "src": "assets/icons/favicon-32x32.png",
+      "sizes": "256x256",
+      "type": "image\/png"
+    },
+    {
+      "src": "assets/icons/mstile-150x150.png",
+      "sizes": "256x256",
+      "type": "image\/png"
+    },
+    {
+      "src": "assets/icons/safari-pinned-tab.svg",
+      "sizes": "256x256",
+      "type": "image\/png"
+    }
+  ],
+  "display": "standalone",
+  "start_url": "./?utm_source=web_app_manifest"
+}
