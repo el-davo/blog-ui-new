@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TransferState, makeStateKey} from '@angular/platform-browser';
+import {TransferState, makeStateKey, Meta, Title} from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
@@ -8,7 +8,7 @@ import {Article} from '../landing/landing.state';
 @Injectable()
 export class ArticlesService {
 
-  constructor(private http: HttpClient, private state: TransferState) {
+  constructor(private http: HttpClient, private state: TransferState, private title: Title, private meta: Meta) {
   }
 
   fetchArticles(): Observable<Article[]> {
@@ -16,6 +16,7 @@ export class ArticlesService {
     const articlesState = this.state.get(articlesKey, null as Article[]);
 
     if (articlesState) {
+      this.title.setTitle('el-davos blog');
       return Observable.of(articlesState);
     }
 
@@ -32,6 +33,11 @@ export class ArticlesService {
     return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`)
       .map(articles => {
         this.state.set(articlesKey, articles);
+        this.title.setTitle('el-davos blog');
+        this.meta.addTag({property: 'description', content: 'el-davos blog'});
+        this.meta.addTag({property: 'og:title', content: 'el-davos blog'});
+        this.meta.addTag({property: 'og:site_name', content: 'el-davos blog'});
+        this.meta.addTag({property: 'og:type', content: 'blog'});
 
         return articles;
       });
@@ -42,12 +48,18 @@ export class ArticlesService {
     const articleState = this.state.get(articleStateKey, null as Article);
 
     if (articleState) {
+      this.title.setTitle(articleState.name);
       return Observable.of(articleState);
     }
 
     return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`)
       .map(article => {
         this.state.set(articleStateKey, article);
+        this.title.setTitle(article.name);
+        this.meta.addTag({property: 'description', content: article.summary});
+        this.meta.addTag({property: 'og:title', content: article.name});
+        this.meta.addTag({property: 'og:site_name', content: 'el-davos blog'});
+        this.meta.addTag({property: 'og:type', content: 'blog'});
 
         return article;
       });
