@@ -66,9 +66,14 @@ export class ArticlesService {
       });
   }
 
-  addArticle(user: User, article: Article) {
-    article.userId = user.id;
-    return this.http.post(`${environment.blogApi}/articles`, article, {
+  addArticle(user: User, article: Article): Observable<Article> {
+    return this.http.post<Article>(`${environment.blogApi}/articles`, article, {
+      headers: new HttpHeaders().set('authorization', user.id)
+    });
+  }
+
+  editArticle(user: User, article: Article): Observable<Article> {
+    return this.http.put<Article>(`${environment.blogApi}/articles/${article.id}`, article, {
       headers: new HttpHeaders().set('authorization', user.id)
     });
   }

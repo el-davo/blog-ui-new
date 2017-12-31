@@ -24,6 +24,8 @@ import {ViewArticleModule} from './view-article/view-article.module';
 import {AddArticleModule} from './add-article/add-article.module';
 import {AddArticleEpics} from './add-article/add-article.epics';
 import {IsLoggedInGuard} from './router/is-logged-in.guard';
+import {EditArticleModule} from './edit-article/edit-article.module';
+import {EditArticleEpics} from './edit-article/edit-article.epics';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {IsLoggedInGuard} from './router/is-logged-in.guard';
     LandingModule,
     ArticlesModule,
     ViewArticleModule,
-    AddArticleModule
+    AddArticleModule,
+    EditArticleModule
   ],
   providers: [
     IsLoggedInGuard
@@ -57,7 +60,8 @@ export class AppModule {
               private userEpics: UserEpics,
               private landingEpics: LandingEpics,
               private viewArticleEpics: ViewArticleEpics,
-              private addArticleEpics: AddArticleEpics) {
+              private addArticleEpics: AddArticleEpics,
+              private editArticleEpics: EditArticleEpics) {
 
     const epics = combineEpics(
       this.navEpics.showLoginModal,
@@ -65,7 +69,9 @@ export class AppModule {
       this.userEpics.login,
       this.landingEpics.fetchArticles,
       this.viewArticleEpics.fetchArticle,
-      this.addArticleEpics.addArticle
+      this.addArticleEpics.addArticle,
+      this.editArticleEpics.fetchArticle,
+      this.editArticleEpics.editArticle
     );
 
     const middleware = [
