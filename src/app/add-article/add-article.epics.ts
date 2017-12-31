@@ -7,20 +7,28 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AddArticleActions} from './add-article.actions';
 import {ArticlesService} from '../articles/articles.service';
+import {Router} from '@angular/router';
+import {Article} from '../landing/landing.state';
+import {User} from '../user/user.state';
 
 @Injectable()
 export class AddArticleEpics {
-  constructor(private addArticleActions: AddArticleActions, private articlesService: ArticlesService) {
+  constructor(private addArticleActions: AddArticleActions,
+              private articlesService: ArticlesService,
+              private router: Router) {
   }
 
   addArticle = (action$, store) => {
     return action$.ofType(AddArticleActions.ADD)
       .mergeMap(() => {
-        const {user} = store.getState().user;
-        const {article} = store.getState().addArticle;
+        const {user}: { user: User } = store.getState().user;
+        const {article}: { article: Article } = store.getState().addArticle;
 
-        return this.articlesService.addArticle(user, article)
-          .mergeMap(() => Observable.of(this.addArticleActions.addSuccess()))
+        return this.articlesService.addArticle(user, {...article, userId: user.userId})
+          .mergeMap((newArticle: Article) => {
+            this.router.navigate(['article', 'edit', newArticle.id]);
+            return Observable.of(this.addArticleActions.addSuccess())
+          })
           .catch(() => Observable.of(this.addArticleActions.addFail()));
       });
   };
