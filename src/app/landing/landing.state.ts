@@ -9,7 +9,7 @@ export interface LandingState {
 }
 
 export interface Article {
-  id: string;
+  id?: string;
   userId: string;
   name: string;
   summary: string;

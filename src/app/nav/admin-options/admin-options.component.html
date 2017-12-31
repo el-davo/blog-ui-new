@@ -1,0 +1,9 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu>
+  <button mat-menu-item>
+    <mat-icon>add</mat-icon>
+    <span [routerLink]="['article', 'add']">New Article</span>
+  </button>
+</mat-menu>
