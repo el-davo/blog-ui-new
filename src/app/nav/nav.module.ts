@@ -10,6 +10,7 @@ import {UserModule} from '../user/user.module';
 import {SharedModule} from '../shared/shared.module';
 import {NavHomeComponent} from './nav-home/nav-home.component';
 import {CoreModule} from '../core/core.module';
+import { AdminOptionsComponent } from './admin-options/admin-options.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {CoreModule} from '../core/core.module';
     NavComponent,
     NavLoginComponent,
     LoginModalComponent,
-    NavHomeComponent
+    NavHomeComponent,
+    AdminOptionsComponent
   ],
   exports: [
     NavComponent

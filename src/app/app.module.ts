@@ -21,6 +21,9 @@ import {LandingEpics} from './landing/landing.epics';
 import {ArticlesModule} from './articles/articles.module';
 import {ViewArticleEpics} from './view-article/view-article.epics';
 import {ViewArticleModule} from './view-article/view-article.module';
+import {AddArticleModule} from './add-article/add-article.module';
+import {AddArticleEpics} from './add-article/add-article.epics';
+import {IsLoggedInGuard} from './router/is-logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -37,9 +40,12 @@ import {ViewArticleModule} from './view-article/view-article.module';
     NavModule,
     LandingModule,
     ArticlesModule,
-    ViewArticleModule
+    ViewArticleModule,
+    AddArticleModule
   ],
-  providers: [],
+  providers: [
+    IsLoggedInGuard
+  ],
   bootstrap: [
     AppComponent
   ]
@@ -50,14 +56,16 @@ export class AppModule {
               private navEpics: NavEpics,
               private userEpics: UserEpics,
               private landingEpics: LandingEpics,
-              private viewArticleEpics: ViewArticleEpics) {
+              private viewArticleEpics: ViewArticleEpics,
+              private addArticleEpics: AddArticleEpics) {
 
     const epics = combineEpics(
       this.navEpics.showLoginModal,
       this.navEpics.hideAllModals,
       this.userEpics.login,
       this.landingEpics.fetchArticles,
-      this.viewArticleEpics.fetchArticle
+      this.viewArticleEpics.fetchArticle,
+      this.addArticleEpics.addArticle
     );
 
     const middleware = [

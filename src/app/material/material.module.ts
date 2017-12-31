@@ -5,7 +5,10 @@ import {
   MatIconModule,
   MatDialogModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatSlideToggleModule,
+  MatMenuModule,
+  MatFormFieldModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -17,7 +20,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialModule {

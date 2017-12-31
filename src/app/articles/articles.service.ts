@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {TransferState, makeStateKey, Meta, Title} from '@angular/platform-browser';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import {Article} from '../landing/landing.state';
+import {User} from '../user/user.state';
 
 @Injectable()
 export class ArticlesService {
@@ -63,5 +64,12 @@ export class ArticlesService {
 
         return article;
       });
+  }
+
+  addArticle(user: User, article: Article) {
+    article.userId = user.id;
+    return this.http.post(`${environment.blogApi}/articles`, article, {
+      headers: new HttpHeaders().set('authorization', user.id)
+    });
   }
 }
