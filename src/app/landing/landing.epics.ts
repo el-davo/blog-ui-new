@@ -1,9 +1,6 @@
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import {of} from 'rxjs/observable/of';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import {LandingActions} from './landing.actions';
 import {ArticlesService} from '../articles/articles.service';
 import {Epic} from 'redux-observable';
@@ -21,7 +18,7 @@ export class LandingEpics {
     return action$.ofType(LandingActions.FETCH_ARTICLES)
       .mergeMap(() => this.articlesService.fetchArticles()
         .map(articles => this.landingActions.fetchArticlesSuccess(articles))
-        .catch(() => Observable.of(this.landingActions.fetchArticlesFail())));
+        .catch(() => of(this.landingActions.fetchArticlesFail())));
   };
 
 }

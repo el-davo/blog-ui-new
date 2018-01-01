@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {MarkdownModule} from 'ngx-markdown';
 import * as reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import {LoadingComponent} from './loading/loading.component';
 import {EditArticleEpics} from '../edit-article/edit-article.epics';

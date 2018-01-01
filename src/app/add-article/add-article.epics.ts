@@ -1,10 +1,5 @@
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/concat';
+import {of} from 'rxjs/observable/of';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import {AddArticleActions} from './add-article.actions';
 import {ArticlesService} from '../articles/articles.service';
 import {Router} from '@angular/router';
@@ -32,9 +27,9 @@ export class AddArticleEpics {
         return this.articlesService.addArticle(user, {...article, userId: user.userId})
           .mergeMap((newArticle: Article) => {
             this.router.navigate(['article', 'edit', newArticle.id]);
-            return Observable.of(this.addArticleActions.addSuccess())
+            return of(this.addArticleActions.addSuccess())
           })
-          .catch(() => Observable.of(this.addArticleActions.addFail()));
+          .catch(() => of(this.addArticleActions.addFail()));
       });
   };
 

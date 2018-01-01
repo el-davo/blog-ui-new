@@ -1,6 +1,7 @@
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
+import {of} from 'rxjs/observable/of';
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
@@ -23,10 +24,10 @@ export class IsLoggedInGuard implements CanActivate {
         return this.isLoggedIn$.mergeMap(isLoggedIn => {
           if (!isLoggedIn) {
             this.router.navigate(['/']);
-            return Observable.of(false);
+            return of(false);
           }
 
-          return Observable.of(true);
+          return of(true);
         })
       });
   }

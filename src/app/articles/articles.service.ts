@@ -3,6 +3,7 @@ import {TransferState, makeStateKey, Meta, Title} from '@angular/platform-browse
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
 import {Article} from '../landing/landing.state';
 import {User} from '../user/user.state';
 
@@ -17,7 +18,7 @@ export class ArticlesService {
     const articlesState = this.state.get(articlesKey, null as Article[]);
 
     if (articlesState) {
-      return Observable.of(articlesState);
+      return of(articlesState);
     }
 
     const filter = {
@@ -43,7 +44,7 @@ export class ArticlesService {
 
     if (articlesState) {
       this.title.setTitle('el-davos blog');
-      return Observable.of(articlesState);
+      return of(articlesState);
     }
 
     const filter = {
@@ -76,7 +77,7 @@ export class ArticlesService {
 
     if (articleState) {
       this.title.setTitle(articleState.name);
-      return Observable.of(articleState);
+      return of(articleState);
     }
 
     return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`)
