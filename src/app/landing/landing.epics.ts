@@ -6,10 +6,15 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {LandingActions} from './landing.actions';
 import {ArticlesService} from '../articles/articles.service';
+import {Epic} from 'redux-observable';
 
 @Injectable()
 export class LandingEpics {
+
+  epics: Epic<any, any>[];
+
   constructor(private articlesService: ArticlesService, private landingActions: LandingActions) {
+    this.epics = [this.fetchArticles];
   }
 
   fetchArticles = action$ => {

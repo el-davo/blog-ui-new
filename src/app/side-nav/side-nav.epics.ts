@@ -8,10 +8,15 @@ import {Observable} from 'rxjs/Observable';
 import {ArticlesService} from '../articles/articles.service';
 import {Article} from '../landing/landing.state';
 import {SideNavActions} from './side-nav.actions';
+import {Epic} from 'redux-observable';
 
 @Injectable()
 export class SideNavEpics {
+
+  epics: Epic<any, any>[];
+
   constructor(private sideNavActions: SideNavActions, private articlesService: ArticlesService) {
+    this.epics = [this.fetchAllArticles];
   }
 
   fetchAllArticles = action$ => {

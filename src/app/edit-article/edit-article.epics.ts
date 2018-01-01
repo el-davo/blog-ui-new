@@ -9,10 +9,15 @@ import {ArticlesService} from '../articles/articles.service';
 import {EditArticleActions} from './edit-article.actions';
 import {Article} from '../landing/landing.state';
 import {User} from '../user/user.state';
+import {Epic} from 'redux-observable';
 
 @Injectable()
 export class EditArticleEpics {
+
+  epics: Epic<any, any>[];
+
   constructor(private editArticleActions: EditArticleActions, private articlesService: ArticlesService) {
+    this.epics = [this.fetchArticle, this.editArticle];
   }
 
   fetchArticle = action$ => {
