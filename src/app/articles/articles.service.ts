@@ -12,6 +12,31 @@ export class ArticlesService {
   constructor(private http: HttpClient, private state: TransferState, private title: Title, private meta: Meta) {
   }
 
+  fetchAllArticles(): Observable<Article[]> {
+    const articlesKey = makeStateKey('allArticles');
+    const articlesState = this.state.get(articlesKey, null as Article[]);
+
+    if (articlesState) {
+      return Observable.of(articlesState);
+    }
+
+    const filter = {
+      where: {
+        public: true
+      },
+      fields: {
+        content: false,
+        parsedContent: false
+      }
+    };
+
+    return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`)
+      .map(articles => {
+        this.state.set(articlesKey, articles);
+        return articles;
+      });
+  }
+
   fetchArticles(): Observable<Article[]> {
     const articlesKey = makeStateKey('articles');
     const articlesState = this.state.get(articlesKey, null as Article[]);
@@ -28,7 +53,8 @@ export class ArticlesService {
       fields: {
         content: false,
         parsedContent: false
-      }
+      },
+      limit: 10
     };
 
     return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`)

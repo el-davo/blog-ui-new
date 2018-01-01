@@ -8,9 +8,9 @@ import {NavEpics} from './nav.epics';
 import {FormsModule} from '@angular/forms';
 import {UserModule} from '../user/user.module';
 import {SharedModule} from '../shared/shared.module';
-import {NavHomeComponent} from './nav-home/nav-home.component';
 import {CoreModule} from '../core/core.module';
-import { AdminOptionsComponent } from './admin-options/admin-options.component';
+import {AdminOptionsComponent} from './admin-options/admin-options.component';
+import {SideNavComponent} from './side-nav/side-nav.component';
 
 @NgModule({
   imports: [
@@ -24,8 +24,8 @@ import { AdminOptionsComponent } from './admin-options/admin-options.component';
     NavComponent,
     NavLoginComponent,
     LoginModalComponent,
-    NavHomeComponent,
-    AdminOptionsComponent
+    AdminOptionsComponent,
+    SideNavComponent
   ],
   exports: [
     NavComponent

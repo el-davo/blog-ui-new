@@ -1,23 +1,27 @@
 import {Component} from '@angular/core';
+import {SideNavActions} from '../../side-nav/side-nav.actions';
 import {dispatch, select} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
-import {SideNavActions} from './side-nav/side-nav.actions';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-side-nav',
+  templateUrl: './side-nav.component.html',
+  styleUrls: ['./side-nav.component.css']
 })
-export class AppComponent {
+export class SideNavComponent {
 
   @select(['sideNav', 'showSideNav']) showSideNav$: Observable<boolean>;
 
   constructor(private actions: SideNavActions) {
-
   }
 
   @dispatch()
-  closeSideNav() {
+  showSideNav() {
+    return this.actions.show();
+  }
+
+  @dispatch()
+  hideSideNav() {
     return this.actions.hide();
   }
 }
