@@ -9,13 +9,17 @@ import {ArticleCardComponent} from './articles/article-card/article-card.compone
 import {SharedModule} from '../shared/shared.module';
 import {ArticlesModule} from '../articles/articles.module';
 import {RouterModule} from '@angular/router';
+import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
-    ArticlesModule
+    ArticlesModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: [
     LandingComponent,

@@ -21,12 +21,10 @@ import {EditArticleActions} from '../edit-article/edit-article.actions';
 
 @NgModule({
   imports: [
-    CommonModule,
-    MarkdownModule.forRoot()
+    CommonModule
   ],
   exports: [
     RouterModule,
-    MarkdownModule,
     LoadingComponent
   ],
   declarations: [
