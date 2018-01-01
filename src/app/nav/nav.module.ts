@@ -11,12 +11,22 @@ import {SharedModule} from '../shared/shared.module';
 import {CoreModule} from '../core/core.module';
 import {AdminOptionsComponent} from './admin-options/admin-options.component';
 import {SideNavComponent} from './side-nav/side-nav.component';
+import {
+  MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule,
+  MatToolbarModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     CoreModule,
-    SharedModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatMenuModule,
     FormsModule,
     UserModule
   ],

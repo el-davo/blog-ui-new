@@ -9,12 +9,17 @@ import {UserService} from './user.service';
 import {Observable} from 'rxjs/Observable';
 import {User} from './user.state';
 import {NavActions} from '../nav/nav.actions';
+import {Epic} from 'redux-observable';
 
 @Injectable()
 export class UserEpics {
+
+  epics: Epic<any, any>[];
+
   constructor(private userActions: UserActions,
               private navActions: NavActions,
               private userService: UserService) {
+    this.epics = [this.login];
   }
 
   login = (action$, store) => {

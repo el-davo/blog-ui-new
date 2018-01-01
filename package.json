@@ -9,7 +9,6 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "start:hot": "ng serve --open --hmr -e=hmr",
     "build:ui": "ng build --prod -pr false",
     "build:server": "ng build --prod -pr false --output-hashing=false --app 1",
     "postbuild:server": "webpack --config webpack.server.config.js",
@@ -52,8 +51,8 @@
   },
   "devDependencies": {
     "@angular-redux/store": "^6.5.4",
-    "@angular/cli": "^1.6.1",
-    "@angular/compiler-cli": "^5.1.1",
+    "@angular/cli": "^1.6.3",
+    "@angular/compiler-cli": "^5.1.2",
     "@angular/language-service": "^4.0.0",
     "@angularclass/hmr": "^2.1.3",
     "@types/jasmine": "2.5.45",
@@ -72,8 +71,6 @@
     "protractor": "~5.1.2",
     "redux": "^3.7.1",
     "redux-immutable-state-invariant": "^2.0.0",
-    "redux-localstorage": "^0.4.1",
-    "redux-logger": "^3.0.6",
     "rosie": "^1.6.0",
     "sw-precache": "^5.2.0",
     "ts-loader": "^2.3.7",

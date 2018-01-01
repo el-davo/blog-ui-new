@@ -6,10 +6,15 @@ import {Injectable} from '@angular/core';
 import {NavActions} from './nav.actions';
 import {MatDialog} from '@angular/material';
 import {LoginModalComponent} from './nav-login/login-modal/login-modal.component';
+import {Epic} from 'redux-observable';
 
 @Injectable()
 export class NavEpics {
+
+  epics: Epic<any, any>[];
+
   constructor(public dialog: MatDialog) {
+    this.epics = [this.showLoginModal, this.hideAllModals];
   }
 
   showLoginModal = action$ => {

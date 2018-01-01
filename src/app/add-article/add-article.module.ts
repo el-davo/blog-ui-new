@@ -5,14 +5,30 @@ import {AddArticleActions} from './add-article.actions';
 import {AddArticleEpics} from './add-article.epics';
 import {AddArticleFormComponent} from './add-article-form/add-article-form.component';
 import {AddArticlePreviewComponent} from './add-article-preview/add-article-preview.component';
-import {SharedModule} from '../shared/shared.module';
-import {CoreModule} from '../core/core.module';
+import {RouterModule, Routes} from '@angular/router';
+import {
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule,
+  MatSlideToggleModule
+} from '@angular/material';
+import {MarkdownModule} from 'ngx-markdown';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AddArticleComponent
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
-    CoreModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatInputModule,
+    MarkdownModule.forRoot(),
+    RouterModule.forChild(routes)
   ],
   declarations: [
     AddArticleComponent,
@@ -20,8 +36,6 @@ import {CoreModule} from '../core/core.module';
     AddArticlePreviewComponent
   ],
   providers: [
-    AddArticleActions,
-    AddArticleEpics
   ]
 })
 export class AddArticleModule {

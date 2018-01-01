@@ -6,10 +6,15 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {ArticlesService} from '../articles/articles.service';
 import {ViewArticleActions} from './view-article.actions';
+import {Epic} from 'redux-observable';
 
 @Injectable()
 export class ViewArticleEpics {
+
+  epics: Epic<any, any>[];
+
   constructor(private articlesService: ArticlesService, private viewArticleActions: ViewArticleActions) {
+    this.epics = [this.fetchArticle];
   }
 
   fetchArticle = action$ => {
