@@ -8,7 +8,8 @@ import {
   MatCardModule,
   MatSlideToggleModule,
   MatMenuModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSidenavModule, MatListModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -23,7 +24,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatCardModule,
     MatSlideToggleModule,
     MatMenuModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatListModule
   ]
 })
 export class MaterialModule {

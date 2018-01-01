@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <app-nav-home></app-nav-home>
+  <app-side-nav></app-side-nav>
   <app-nav-login *ngIf="!(user$ | async)?.isLoggedIn"></app-nav-login>
   <app-admin-options *ngIf="(user$ | async)?.isLoggedIn"></app-admin-options>
 </mat-toolbar>
