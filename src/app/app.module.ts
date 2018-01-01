@@ -8,13 +8,10 @@ import {AppComponent} from './app.component';
 import {routes} from './routes';
 import {NavModule} from './nav/nav.module';
 import {HttpClientModule} from '@angular/common/http';
-import {LandingModule} from './landing/landing.module';
-import {ArticlesModule} from './articles/articles.module';
-import {ViewArticleModule} from './view-article/view-article.module';
-import {AddArticleModule} from './add-article/add-article.module';
 import {IsLoggedInGuard} from './router/is-logged-in.guard';
-import {EditArticleModule} from './edit-article/edit-article.module';
+import {LandingModule} from './landing/landing.module';
 import {SideNavModule} from './side-nav/side-nav.module';
+import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 
 @NgModule({
@@ -29,14 +26,14 @@ import {SharedModule} from './shared/shared.module';
     BrowserAnimationsModule,
     BrowserTransferStateModule,
     NgReduxModule,
+    CoreModule,
+    SharedModule,
     NavModule,
     LandingModule,
-    ArticlesModule,
-    ViewArticleModule,
-    AddArticleModule,
-    EditArticleModule,
-    SideNavModule,
-    SharedModule
+    SideNavModule
+  ],
+  exports: [
+    CoreModule
   ],
   providers: [
     IsLoggedInGuard

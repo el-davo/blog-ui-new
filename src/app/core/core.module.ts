@@ -15,6 +15,9 @@ import {NavEpics} from '../nav/nav.epics';
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import {environment} from '../../environments/environment';
 import {rootReducer} from '../root.reducer';
+import {ViewArticleActions} from '../view-article/view-article.actions';
+import {AddArticleActions} from '../add-article/add-article.actions';
+import {EditArticleActions} from '../edit-article/edit-article.actions';
 
 @NgModule({
   imports: [
@@ -28,6 +31,17 @@ import {rootReducer} from '../root.reducer';
   ],
   declarations: [
     LoadingComponent
+  ],
+  providers: [
+    // Actions
+    ViewArticleActions,
+    AddArticleActions,
+    EditArticleActions,
+
+    // Epics
+    ViewArticleEpics,
+    AddArticleEpics,
+    EditArticleEpics
   ]
 })
 export class CoreModule {

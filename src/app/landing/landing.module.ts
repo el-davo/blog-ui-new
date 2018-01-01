@@ -7,13 +7,15 @@ import {LandingActions} from './landing.actions';
 import {LandingEpics} from './landing.epics';
 import {ArticleCardComponent} from './articles/article-card/article-card.component';
 import {SharedModule} from '../shared/shared.module';
-import {CoreModule} from '../core/core.module';
+import {ArticlesModule} from '../articles/articles.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    CoreModule
+    RouterModule,
+    ArticlesModule
   ],
   declarations: [
     LandingComponent,
