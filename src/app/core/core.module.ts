@@ -17,7 +17,7 @@ import {rootReducer} from '../root.reducer';
 import {ViewArticleActions} from '../view-article/view-article.actions';
 import {AddArticleActions} from '../add-article/add-article.actions';
 import {EditArticleActions} from '../edit-article/edit-article.actions';
-import {init, reduxMiddleware} from 'logrocket';
+import * as logRocket from 'logrocket';
 
 @NgModule({
   imports: [
@@ -72,8 +72,8 @@ export class CoreModule {
     }
 
     if (environment.production) {
-      middleware.push(reduxMiddleware());
-      init('zlni7s/blog');
+      logRocket.init('zlni7s/blog');
+      middleware.push(logRocket.reduxMiddleware());
     }
 
     const enhancers = [];
