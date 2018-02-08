@@ -17,7 +17,7 @@ import {rootReducer} from '../root.reducer';
 import {ViewArticleActions} from '../view-article/view-article.actions';
 import {AddArticleActions} from '../add-article/add-article.actions';
 import {EditArticleActions} from '../edit-article/edit-article.actions';
-import {init} from 'logrocket';
+import {init, reduxMiddleware} from 'logrocket';
 
 @NgModule({
   imports: [
@@ -71,12 +71,13 @@ export class CoreModule {
       middleware.push(reduxImmutableStateInvariant.default());
     }
 
+    if (environment.production) {
+      middleware.push(reduxMiddleware());
+      init('zlni7s/blog');
+    }
+
     const enhancers = [];
 
     ngRedux.configureStore(rootReducer, {}, middleware, enhancers);
-
-    if (environment.production) {
-      init('zlni7s/blog');
-    }
   }
 }
