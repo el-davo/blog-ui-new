@@ -208,22 +208,22 @@
   version "5.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/@nguniversal/module-map-ngfactory-loader/-/module-map-ngfactory-loader-5.0.0-beta.5.tgz#d86497e704f702e1a18bbcab5dd6586057941fa5"
 
-"@ngx-share/button@5.0.0-beta.3", "@ngx-share/button@^5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@ngx-share/button/-/button-5.0.0-beta.3.tgz#c1e27665f288559ff52db5caec126f18199093b8"
+"@ngx-share/button@5.0.1", "@ngx-share/button@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-share/button/-/button-5.0.1.tgz#79e6ddddcbc5d058d062cc17aae1acf673837d79"
   dependencies:
-    "@ngx-share/core" "5.0.0-beta.3"
+    "@ngx-share/core" "5.0.1"
 
-"@ngx-share/buttons@^5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@ngx-share/buttons/-/buttons-5.0.0-beta.3.tgz#56de3f8db67f35c93bdc7a628ad88edfd97072f5"
+"@ngx-share/buttons@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-share/buttons/-/buttons-5.0.1.tgz#1e7c1baf46697268d689ec6cb56f5738ac017850"
   dependencies:
-    "@ngx-share/button" "5.0.0-beta.3"
-    "@ngx-share/core" "5.0.0-beta.3"
+    "@ngx-share/button" "5.0.1"
+    "@ngx-share/core" "5.0.1"
 
-"@ngx-share/core@5.0.0-beta.3", "@ngx-share/core@^5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@ngx-share/core/-/core-5.0.0-beta.3.tgz#0e6b7779e346e28113ce6bcc2e760b6706ede361"
+"@ngx-share/core@5.0.1", "@ngx-share/core@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-share/core/-/core-5.0.1.tgz#24f75d66992ee073adce1a41eb4bc148e4c80186"
 
 "@schematics/angular@0.1.17":
   version "0.1.17"
