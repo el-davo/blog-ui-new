@@ -18,6 +18,7 @@ import {ViewArticleActions} from '../view-article/view-article.actions';
 import {AddArticleActions} from '../add-article/add-article.actions';
 import {EditArticleActions} from '../edit-article/edit-article.actions';
 import * as logRocket from 'logrocket';
+import {isBrowser} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -71,7 +72,7 @@ export class CoreModule {
       middleware.push(reduxImmutableStateInvariant.default());
     }
 
-    if (environment.production) {
+    if (environment.production && isBrowser()) {
       logRocket.init('zlni7s/blog');
       middleware.push(logRocket.reduxMiddleware());
     }
