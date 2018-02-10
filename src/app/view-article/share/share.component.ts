@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Article} from '../../landing/landing.state';
 import {select} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
+import {isBrowser} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-share',
@@ -15,4 +16,7 @@ export class ShareComponent {
   constructor() {
   }
 
+  isBrowser() {
+    return isBrowser();
+  }
 }
