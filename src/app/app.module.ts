@@ -43,6 +43,8 @@ export const metaReducers = environment.production ? [] : [logger];
     MatSidenavModule,
     CoreModule,
     SharedModule,
+
+    // Feature Modules
     NavModule,
     LandingModule,
     SideNavModule
