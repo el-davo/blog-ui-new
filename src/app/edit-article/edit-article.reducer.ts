@@ -1,5 +1,11 @@
 import {editArticleState, EditArticleState} from './edit-article.state';
 import {EditArticleActions} from './edit-article.actions';
+import {UserState} from '../user/user.state';
+
+export interface ModuleState {
+  editArticle: EditArticleState;
+  user: UserState
+}
 
 export function editArticleReducer(state: EditArticleState = editArticleState, action): EditArticleState {
   switch (action.type) {

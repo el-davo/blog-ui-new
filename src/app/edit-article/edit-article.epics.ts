@@ -7,6 +7,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {mergeMap, withLatestFrom} from 'rxjs/operators';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../root.reducer';
+import {ModuleState} from './edit-article.reducer';
 
 @Injectable()
 export class EditArticleEpics {
@@ -30,7 +31,7 @@ export class EditArticleEpics {
     ));
 
   constructor(private actions$: Actions,
-              private store$: Store<AppState>,
+              private store$: Store<ModuleState>,
               private editArticleActions: EditArticleActions,
               private articlesService: ArticlesService) {
   }

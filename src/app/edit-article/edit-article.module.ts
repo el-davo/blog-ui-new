@@ -9,6 +9,10 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 import {MarkdownModule} from 'ngx-markdown';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+import {editArticleReducer} from './edit-article.reducer';
+import {EditArticleEpics} from './edit-article.epics';
 
 const routes: Routes = [
   {
@@ -26,7 +30,9 @@ const routes: Routes = [
     MatButtonModule,
     MatInputModule,
     MarkdownModule.forRoot(),
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('editArticle', editArticleReducer),
+    EffectsModule.forFeature([EditArticleEpics])
   ],
   declarations: [
     EditArticleComponent,
