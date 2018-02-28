@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {SideNavState} from './side-nav.state';
-import {select} from '@angular-redux/store';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { SideNavState } from './side-nav.state';
+import { AppState } from '../root.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-side-nav',
@@ -10,9 +11,10 @@ import {select} from '@angular-redux/store';
 })
 export class SideNavComponent implements OnInit {
 
-  @select('sideNav') sideNav$: Observable<SideNavState>;
+  sideNav$: Observable<SideNavState>;
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
+    this.sideNav$ = store.select('sideNav');
   }
 
   ngOnInit() {

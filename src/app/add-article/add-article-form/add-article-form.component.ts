@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
-import {dispatch, select} from '@angular-redux/store';
-import {Observable} from 'rxjs/Observable';
-import {AddArticleState} from '../add-article.state';
-import {AddArticleActions} from '../add-article.actions';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AddArticleState } from '../add-article.state';
+import { AddArticleActions } from '../add-article.actions';
+import { AppState } from '../../root.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-add-article-form',
@@ -11,38 +12,33 @@ import {AddArticleActions} from '../add-article.actions';
 })
 export class AddArticleFormComponent {
 
-  @select('addArticle') addArticle$: Observable<AddArticleState>;
+  addArticle$: Observable<AddArticleState>;
 
-  constructor(private actions: AddArticleActions) {
+  constructor(private store: Store<AppState>, private actions: AddArticleActions) {
+    this.addArticle$ = this.store.select('addArticle');
   }
 
-  @dispatch()
   addArticle() {
-    return this.actions.add();
+    this.store.dispatch(this.actions.add());
   }
 
-  @dispatch()
   updateName(name: string) {
-    return this.actions.updateName(name);
+    this.store.dispatch(this.actions.updateName(name));
   }
 
-  @dispatch()
   updateSummary(summary: string) {
-    return this.actions.updateSummary(summary);
+    this.store.dispatch(this.actions.updateSummary(summary));
   }
 
-  @dispatch()
   updateImgUrl(imgUrl: string) {
-    return this.actions.updateImgUrl(imgUrl);
+    this.store.dispatch(this.actions.updateImgUrl(imgUrl));
   }
 
-  @dispatch()
   updatePublic(isPublic: boolean) {
-    return this.actions.updatePublic(isPublic);
+    this.store.dispatch(this.actions.updatePublic(isPublic));
   }
 
-  @dispatch()
   updateContent(content: string) {
-    return this.actions.updateContent(content);
+    this.store.dispatch(this.actions.updateContent(content));
   }
 }

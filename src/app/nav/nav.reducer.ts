@@ -1,7 +1,7 @@
 import {NavState, navState} from './nav.state';
 import {NavActions} from './nav.actions';
 
-export const navReducer = (state: NavState = navState, action): NavState => {
+export function navReducer(state: NavState = navState, action): NavState {
   switch (action.type) {
     case NavActions.SHOW_LOGIN_MODAL:
       return {...state, showLoginModal: true};
@@ -10,4 +10,4 @@ export const navReducer = (state: NavState = navState, action): NavState => {
     default:
       return state;
   }
-};
+}

@@ -1,7 +1,7 @@
 import {UserState, userState} from './user.state';
 import {UserActions} from './user.actions';
 
-export const userReducer = (state: UserState = userState, action): UserState => {
+export function userReducer(state: UserState = userState, action): UserState {
   switch (action.type) {
     case UserActions.LOGIN:
       return {...state, isLoggingIn: true};

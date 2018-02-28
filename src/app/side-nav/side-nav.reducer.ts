@@ -1,7 +1,7 @@
 import {sideNavState, SideNavState} from './side-nav.state';
 import {SideNavActions} from './side-nav.actions';
 
-export const sideNavReducer = (state: SideNavState = sideNavState, action): SideNavState => {
+export function sideNavReducer(state: SideNavState = sideNavState, action): SideNavState {
   switch (action.type) {
     case SideNavActions.SHOW:
       return {...state, showSideNav: true};
@@ -16,4 +16,4 @@ export const sideNavReducer = (state: SideNavState = sideNavState, action): Side
     default:
       return state;
   }
-};
+}

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {dispatch, select} from '@angular-redux/store';
 import {SideNavActions} from '../side-nav.actions';
 import {Observable} from 'rxjs/Observable';
 import {Article} from '../../landing/landing.state';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../root.reducer';
 
 @Component({
   selector: 'app-list-articles',
@@ -11,19 +12,18 @@ import {Article} from '../../landing/landing.state';
 })
 export class ListArticlesComponent implements OnInit {
 
-  @select(['sideNav', 'articles']) articles$: Observable<Article[]>;
+  articles$: Observable<Article[]>;
 
-  constructor(private actions: SideNavActions) {
+  constructor(private store: Store<AppState>, private actions: SideNavActions) {
+    this.articles$ = this.store.select('sideNav', 'articles');
   }
 
-  @dispatch()
   ngOnInit() {
-    return this.actions.fetchAllArticles();
+    this.store.dispatch(this.actions.fetchAllArticles());
   }
 
-  @dispatch()
   hideSideNav() {
-    return this.actions.hide();
+    this.store.dispatch(this.actions.hide());
   }
 
 }

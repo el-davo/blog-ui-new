@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {SideNavActions} from '../../side-nav/side-nav.actions';
-import {dispatch, select} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
+import {AppState} from '../../root.reducer';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-side-nav',
@@ -10,18 +11,17 @@ import {Observable} from 'rxjs/Observable';
 })
 export class SideNavComponent {
 
-  @select(['sideNav', 'showSideNav']) showSideNav$: Observable<boolean>;
+  showSideNav$: Observable<boolean>;
 
-  constructor(private actions: SideNavActions) {
+  constructor(private store: Store<AppState>, private actions: SideNavActions) {
+    this.showSideNav$ = this.store.select('sideNav', 'showSideNav');
   }
 
-  @dispatch()
   showSideNav() {
-    return this.actions.show();
+    this.store.dispatch(this.actions.show());
   }
 
-  @dispatch()
   hideSideNav() {
-    return this.actions.hide();
+    this.store.dispatch(this.actions.hide());
   }
 }

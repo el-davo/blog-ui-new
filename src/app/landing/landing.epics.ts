@@ -3,22 +3,23 @@ import {of} from 'rxjs/observable/of';
 import {Injectable} from '@angular/core';
 import {LandingActions} from './landing.actions';
 import {ArticlesService} from '../articles/articles.service';
-import {Epic} from 'redux-observable';
+import {Actions, Effect, ofType} from '@ngrx/effects';
+import {mergeMap} from 'rxjs/operators';
 
 @Injectable()
 export class LandingEpics {
 
-  epics: Epic<any, any>[];
-
-  constructor(private articlesService: ArticlesService, private landingActions: LandingActions) {
-    this.epics = [this.fetchArticles];
-  }
-
-  fetchArticles = action$ => {
-    return action$.ofType(LandingActions.FETCH_ARTICLES)
-      .mergeMap(() => this.articlesService.fetchArticles()
+  @Effect() login$ = this.actions$.pipe(
+    ofType(LandingActions.FETCH_ARTICLES),
+    mergeMap(() =>
+      this.articlesService.fetchArticles()
         .map(articles => this.landingActions.fetchArticlesSuccess(articles))
-        .catch(() => of(this.landingActions.fetchArticlesFail())));
-  };
+        .catch(() => of(this.landingActions.fetchArticlesFail())))
+  );
+
+  constructor(private actions$: Actions,
+              private articlesService: ArticlesService,
+              private landingActions: LandingActions) {
+  }
 
 }
