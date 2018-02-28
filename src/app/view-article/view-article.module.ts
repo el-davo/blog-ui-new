@@ -10,6 +10,9 @@ import {ShareComponent} from './share/share.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MarkdownModule} from 'ngx-markdown';
 import {MatCardModule} from '@angular/material';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+import {viewArticleReducer} from './view-article.reducer';
 
 const routes: Routes = [
   {
@@ -25,7 +28,9 @@ const routes: Routes = [
     MarkdownModule.forRoot(),
     RouterModule.forChild(routes),
     ShareModule.forRoot(),
-    ShareButtonModule.forRoot()
+    ShareButtonModule.forRoot(),
+    StoreModule.forFeature('viewArticle', viewArticleReducer),
+    EffectsModule.forFeature([ViewArticleEpics])
   ],
   exports: [
     RouterModule

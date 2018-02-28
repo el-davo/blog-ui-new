@@ -1,6 +1,10 @@
 import {ViewArticleState, viewArticleState} from './view-article.state';
 import {ViewArticleActions} from './view-article.actions';
 
+export interface ModuleState {
+  viewArticle: ViewArticleState;
+}
+
 export function viewArticleReducer(state: ViewArticleState = viewArticleState, action): ViewArticleState {
   switch (action.type) {
     case ViewArticleActions.FETCH_ARTICLE:

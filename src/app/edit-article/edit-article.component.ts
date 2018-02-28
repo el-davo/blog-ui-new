@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { EditArticleActions } from './edit-article.actions';
-import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { AppState } from '../root.reducer';
+import {Component, OnInit} from '@angular/core';
+import {EditArticleActions} from './edit-article.actions';
+import {ActivatedRoute} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {ModuleState} from './edit-article.reducer';
 
 @Component({
   selector: 'app-edit-article',
@@ -11,7 +11,7 @@ import { AppState } from '../root.reducer';
 })
 export class EditArticleComponent implements OnInit {
 
-  constructor(private store: Store<AppState>, private actions: EditArticleActions, private route: ActivatedRoute) {
+  constructor(private store: Store<ModuleState>, private actions: EditArticleActions, private route: ActivatedRoute) {
   }
 
   ngOnInit() {

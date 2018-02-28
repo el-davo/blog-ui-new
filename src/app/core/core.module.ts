@@ -1,10 +1,9 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {Inject, NgModule, PLATFORM_ID} from '@angular/core';
+import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {LoadingComponent} from './loading/loading.component';
 import {environment} from '../../environments/environment';
 import * as logRocket from 'logrocket';
-import {isBrowser} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -21,8 +20,8 @@ import {isBrowser} from '@angular/flex-layout';
 })
 export class CoreModule {
 
-  constructor() {
-    if (environment.production && isBrowser()) {
+  constructor(@Inject(PLATFORM_ID) platformId: string) {
+    if (environment.production && isPlatformBrowser(platformId)) {
       logRocket.init('zlni7s/blog');
     }
   }

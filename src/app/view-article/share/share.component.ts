@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
 import {Article} from '../../landing/landing.state';
 import {Observable} from 'rxjs/Observable';
-import {isBrowser} from '@angular/flex-layout';
-import {AppState} from '../../root.reducer';
 import {Store} from '@ngrx/store';
+import {ModuleState} from '../view-article.reducer';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-share',
@@ -13,12 +13,10 @@ import {Store} from '@ngrx/store';
 export class ShareComponent {
 
   article$: Observable<Article>;
+  isBrowser: boolean;
 
-  constructor(private store: Store<AppState>) {
+  constructor(@Inject(PLATFORM_ID) platformId: string, private store: Store<ModuleState>) {
     this.article$ = store.select('viewArticle', 'article');
-  }
-
-  isBrowser() {
-    return isBrowser();
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 }

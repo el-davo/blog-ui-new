@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Article } from '../../landing/landing.state';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../root.reducer';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {Article} from '../../landing/landing.state';
+import {Store} from '@ngrx/store';
+import {ModuleState} from '../add-article.reducer';
 
 @Component({
   selector: 'app-add-article-preview',
@@ -13,7 +13,7 @@ export class AddArticlePreviewComponent implements OnInit {
 
   article$: Observable<Article>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<ModuleState>) {
     this.article$ = store.select('addArticle', 'article');
   }
 

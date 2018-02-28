@@ -1,12 +1,10 @@
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/take';
-import { of } from 'rxjs/observable/of';
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { AppState } from '../root.reducer';
-import { Store } from '@ngrx/store';
+import {of} from 'rxjs/observable/of';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {AppState} from '../root.reducer';
+import {Store} from '@ngrx/store';
+import {filter, mergeMap, take} from 'rxjs/operators';
 
 @Injectable()
 export class IsLoggedInGuard implements CanActivate {
@@ -20,18 +18,19 @@ export class IsLoggedInGuard implements CanActivate {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.isLoggingIn$
-      .filter((isLoggingIn) => isLoggingIn === false)
-      .take(1)
-      .mergeMap(() => {
-        return this.isLoggedIn$.mergeMap(isLoggedIn => {
-          if (!isLoggedIn) {
-            this.router.navigate(['/']);
-            return of(false);
-          }
+    return this.isLoggingIn$.pipe(
+      filter((isLoggingIn) => isLoggingIn === false),
+      take(1),
+      mergeMap(() => {
+        return this.isLoggedIn$.pipe(
+          mergeMap(isLoggedIn => {
+            if (!isLoggedIn) {
+              this.router.navigate(['/']);
+              return of(false);
+            }
 
-          return of(true);
-        })
-      });
+            return of(true);
+          }))
+      }))
   }
 }

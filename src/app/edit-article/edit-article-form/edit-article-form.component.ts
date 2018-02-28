@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { EditArticleState } from '../edit-article.state';
-import { EditArticleActions } from '../edit-article.actions';
-import { AppState } from '../../root.reducer';
-import { Store } from '@ngrx/store';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {EditArticleState} from '../edit-article.state';
+import {EditArticleActions} from '../edit-article.actions';
+import {Store} from '@ngrx/store';
+import {ModuleState} from '../edit-article.reducer';
 
 @Component({
   selector: 'app-edit-article-form',
@@ -14,7 +14,7 @@ export class EditArticleFormComponent {
 
   editArticle$: Observable<EditArticleState>;
 
-  constructor(private store: Store<AppState>, private actions: EditArticleActions) {
+  constructor(private store: Store<ModuleState>, private actions: EditArticleActions) {
     this.editArticle$ = this.store.select('editArticle');
   }
 
