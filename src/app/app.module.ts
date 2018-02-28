@@ -25,7 +25,6 @@ import {AddArticleEpics} from './add-article/add-article.epics';
 import {EditArticleEpics} from './edit-article/edit-article.epics';
 import {SideNavEpics} from './side-nav/side-nav.epics';
 import {ViewArticleActions} from './view-article/view-article.actions';
-import {AddArticleActions} from './add-article/add-article.actions';
 import {EditArticleActions} from './edit-article/edit-article.actions';
 
 export function logger(reducer: ActionReducer<AppState>): any {
@@ -45,7 +44,7 @@ export const metaReducers = environment.production ? [] : [logger];
     BrowserAnimationsModule,
     BrowserTransferStateModule,
     StoreModule.forRoot(getRootReducer(), {metaReducers}),
-    EffectsModule.forRoot([NavEpics, UserEpics, LandingEpics, ViewArticleEpics, AddArticleEpics, EditArticleEpics, SideNavEpics]),
+    EffectsModule.forRoot([NavEpics, UserEpics, LandingEpics, EditArticleEpics, SideNavEpics]),
     MatSidenavModule,
     CoreModule,
     SharedModule,
@@ -60,11 +59,8 @@ export const metaReducers = environment.production ? [] : [logger];
     IsLoggedInGuard,
 
     // Needed for effects
-    ViewArticleActions,
-    AddArticleEpics,
-    AddArticleActions,
     EditArticleEpics,
-    EditArticleActions,
+    EditArticleActions
   ],
   bootstrap: [
     AppComponent

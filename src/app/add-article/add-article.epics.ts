@@ -6,8 +6,8 @@ import {Router} from '@angular/router';
 import {Article} from '../landing/landing.state';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
-import {AppState} from '../root.reducer';
 import {mergeMap, withLatestFrom} from 'rxjs/operators';
+import {ModuleState} from './add-article.reducer';
 
 @Injectable()
 export class AddArticleEpics {
@@ -26,7 +26,7 @@ export class AddArticleEpics {
     ));
 
   constructor(private actions$: Actions,
-              private store$: Store<AppState>,
+              private store$: Store<ModuleState>,
               private addArticleActions: AddArticleActions,
               private articlesService: ArticlesService,
               private router: Router) {

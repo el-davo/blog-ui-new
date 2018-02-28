@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AddArticleComponent} from './add-article.component';
-import {AddArticleActions} from './add-article.actions';
-import {AddArticleEpics} from './add-article.epics';
 import {AddArticleFormComponent} from './add-article-form/add-article-form.component';
 import {AddArticlePreviewComponent} from './add-article-preview/add-article-preview.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -11,6 +9,11 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 import {MarkdownModule} from 'ngx-markdown';
+import {AddArticleActions} from './add-article.actions';
+import {AddArticleEpics} from './add-article.epics';
+import {StoreModule} from '@ngrx/store';
+import {addArticleReducer} from './add-article.reducer';
+import {EffectsModule} from '@ngrx/effects';
 
 const routes: Routes = [
   {
@@ -28,7 +31,9 @@ const routes: Routes = [
     MatButtonModule,
     MatInputModule,
     MarkdownModule.forRoot(),
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('addArticle', addArticleReducer),
+    EffectsModule.forFeature([AddArticleEpics])
   ],
   declarations: [
     AddArticleComponent,
@@ -36,6 +41,8 @@ const routes: Routes = [
     AddArticlePreviewComponent
   ],
   providers: [
+    AddArticleActions,
+    AddArticleEpics
   ]
 })
 export class AddArticleModule {

@@ -1,3 +1,4 @@
+import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import {TransferState, makeStateKey, Meta, Title} from '@angular/platform-browser';
 import {HttpClient, HttpHeaders} from '@angular/common/http';

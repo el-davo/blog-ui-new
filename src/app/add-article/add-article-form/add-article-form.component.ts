@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { AddArticleState } from '../add-article.state';
-import { AddArticleActions } from '../add-article.actions';
-import { AppState } from '../../root.reducer';
-import { Store } from '@ngrx/store';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {AddArticleState} from '../add-article.state';
+import {AddArticleActions} from '../add-article.actions';
+import {Store} from '@ngrx/store';
+import {ModuleState} from '../add-article.reducer';
 
 @Component({
   selector: 'app-add-article-form',
@@ -14,7 +14,7 @@ export class AddArticleFormComponent {
 
   addArticle$: Observable<AddArticleState>;
 
-  constructor(private store: Store<AppState>, private actions: AddArticleActions) {
+  constructor(private store: Store<ModuleState>, private actions: AddArticleActions) {
     this.addArticle$ = this.store.select('addArticle');
   }
 

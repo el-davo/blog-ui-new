@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {isBrowser} from '@angular/flex-layout';
 import {AppState} from '../../root.reducer';
 import {Store} from '@ngrx/store';
+import {ModuleState} from '../view-article.reducer';
 
 @Component({
   selector: 'app-share',
@@ -14,7 +15,7 @@ export class ShareComponent {
 
   article$: Observable<Article>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<ModuleState>) {
     this.article$ = store.select('viewArticle', 'article');
   }
 
