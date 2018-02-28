@@ -4,33 +4,31 @@ import {AddArticleActions} from './add-article.actions';
 import {ArticlesService} from '../articles/articles.service';
 import {Router} from '@angular/router';
 import {Article} from '../landing/landing.state';
-import {User} from '../user/user.state';
-import {Epic} from 'redux-observable';
+import {Actions, Effect, ofType} from '@ngrx/effects';
+import {select, Store} from '@ngrx/store';
+import {AppState} from '../root.reducer';
+import {mergeMap, withLatestFrom} from 'rxjs/operators';
 
 @Injectable()
 export class AddArticleEpics {
 
-  epics: Epic<any, any>[];
+  @Effect() addArticle$ = this.actions$.pipe(
+    ofType(AddArticleActions.ADD),
+    withLatestFrom(this.store$),
+    select(([action, storeState]) => storeState),
+    mergeMap((store) =>
+      this.articlesService.addArticle(store.user.user, {...store.addArticle.article, userId: store.user.user.userId})
+        .mergeMap((newArticle: Article) => {
+          this.router.navigate(['article', 'edit', newArticle.id]);
+          return of(this.addArticleActions.addSuccess())
+        })
+        .catch(() => of(this.addArticleActions.addFail()))
+    ));
 
-  constructor(private addArticleActions: AddArticleActions,
+  constructor(private actions$: Actions,
+              private store$: Store<AppState>,
+              private addArticleActions: AddArticleActions,
               private articlesService: ArticlesService,
               private router: Router) {
-    this.epics = [this.addArticle];
   }
-
-  addArticle = (action$, store) => {
-    return action$.ofType(AddArticleActions.ADD)
-      .mergeMap(() => {
-        const {user}: { user: User } = store.getState().user;
-        const {article}: { article: Article } = store.getState().addArticle;
-
-        return this.articlesService.addArticle(user, {...article, userId: user.userId})
-          .mergeMap((newArticle: Article) => {
-            this.router.navigate(['article', 'edit', newArticle.id]);
-            return of(this.addArticleActions.addSuccess())
-          })
-          .catch(() => of(this.addArticleActions.addFail()));
-      });
-  };
-
 }

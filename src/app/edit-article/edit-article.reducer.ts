@@ -1,7 +1,7 @@
 import {editArticleState, EditArticleState} from './edit-article.state';
 import {EditArticleActions} from './edit-article.actions';
 
-export const editArticleReducer = (state: EditArticleState = editArticleState, action): EditArticleState => {
+export function editArticleReducer(state: EditArticleState = editArticleState, action): EditArticleState {
   switch (action.type) {
     case EditArticleActions.FETCH:
       return {...state, isFetchingArticle: true};
@@ -28,4 +28,4 @@ export const editArticleReducer = (state: EditArticleState = editArticleState, a
     default:
       return state;
   }
-};
+}

@@ -1,7 +1,7 @@
 import {LandingState, landingState} from './landing.state';
 import {LandingActions} from './landing.actions';
 
-export const landingReducer = (state: LandingState = landingState, action): LandingState => {
+export function landingReducer(state: LandingState = landingState, action): LandingState {
   switch (action.type) {
     case LandingActions.FETCH_ARTICLES:
       return {...state, isFetchingArticles: true};
@@ -12,4 +12,4 @@ export const landingReducer = (state: LandingState = landingState, action): Land
     default:
       return state;
   }
-};
+}

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { SideNavActions } from '../side-nav.actions';
-import { Observable } from 'rxjs/Observable';
-import { Article } from '../../landing/landing.state';
-import { Store } from '@ngrx/store';
+import {Component, OnInit} from '@angular/core';
+import {SideNavActions} from '../side-nav.actions';
+import {Observable} from 'rxjs/Observable';
+import {Article} from '../../landing/landing.state';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../root.reducer';
 
 @Component({
   selector: 'app-list-articles',
@@ -14,7 +15,7 @@ export class ListArticlesComponent implements OnInit {
   articles$: Observable<Article[]>;
 
   constructor(private store: Store<AppState>, private actions: SideNavActions) {
-    this.articles$ = this.store.select(['sideNav', 'articles']);
+    this.articles$ = this.store.select('sideNav', 'articles');
   }
 
   ngOnInit() {

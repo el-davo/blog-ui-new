@@ -1,7 +1,7 @@
 import {addArticleState, AddArticleState} from './add-article.state';
 import {AddArticleActions} from './add-article.actions';
 
-export const addArticleReducer = (state: AddArticleState = addArticleState, action): AddArticleState => {
+export function addArticleReducer(state: AddArticleState = addArticleState, action): AddArticleState {
   switch (action.type) {
     case AddArticleActions.ADD:
       return {...state, isAddingArticle: true};
@@ -22,4 +22,4 @@ export const addArticleReducer = (state: AddArticleState = addArticleState, acti
     default:
       return state;
   }
-};
+}

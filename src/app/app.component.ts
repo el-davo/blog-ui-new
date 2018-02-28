@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { SideNavActions } from './side-nav/side-nav.actions';
-import { AppState } from './root.reducer';
-import { Store } from '@ngrx/store';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {SideNavActions} from './side-nav/side-nav.actions';
+import {AppState} from './root.reducer';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent {
   showSideNav$: Observable<boolean>;
 
   constructor(private store: Store<AppState>, private actions: SideNavActions) {
-    this.showSideNav$ = this.store.select(['sideNav', 'showSideNav']);
+    this.showSideNav$ = this.store.select('sideNav', 'showSideNav');
   }
 
   closeSideNav() {

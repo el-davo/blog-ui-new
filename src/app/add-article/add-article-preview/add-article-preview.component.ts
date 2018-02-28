@@ -14,7 +14,7 @@ export class AddArticlePreviewComponent implements OnInit {
   article$: Observable<Article>;
 
   constructor(private store: Store<AppState>) {
-    this.article$ = store.select(['addArticle', 'article']);
+    this.article$ = store.select('addArticle', 'article');
   }
 
   ngOnInit() {

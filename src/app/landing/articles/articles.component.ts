@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { LandingActions } from '../landing.actions';
-import { Observable } from 'rxjs/Observable';
-import { LandingState } from '../landing.state';
+import {Component, OnInit} from '@angular/core';
+import {LandingActions} from '../landing.actions';
+import {Observable} from 'rxjs/Observable';
+import {LandingState} from '../landing.state';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../root.reducer';
 
 @Component({
   selector: 'app-articles',

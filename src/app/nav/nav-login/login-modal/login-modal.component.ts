@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
-import { NavActions } from '../../nav.actions';
-import { UserActions } from '../../../user/user.actions';
-import { Observable } from 'rxjs/Observable';
-import { UserState } from '../../../user/user.state';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
+import {NavActions} from '../../nav.actions';
+import {UserActions} from '../../../user/user.actions';
+import {Observable} from 'rxjs/Observable';
+import {UserState} from '../../../user/user.state';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../root.reducer';
 
 @Component({
   selector: 'app-login-modal',
@@ -28,7 +30,7 @@ export class LoginModalComponent {
   }
 
   login() {
-    this.store.dispatch(this.navActions.login());
+    this.store.dispatch(this.userActions.login());
   }
 
   updateLoginUsername(username: string) {

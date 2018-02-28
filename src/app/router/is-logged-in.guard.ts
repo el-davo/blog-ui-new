@@ -15,8 +15,8 @@ export class IsLoggedInGuard implements CanActivate {
   isLoggingIn$: Observable<boolean>;
 
   constructor(private store: Store<AppState>, private router: Router) {
-    this.isLoggedIn$ = store.select(['user', 'isLoggedIn']);
-    this.isLoggingIn$ = store.select(['user', 'isLoggingIn']);
+    this.isLoggedIn$ = store.select('user', 'isLoggedIn');
+    this.isLoggingIn$ = store.select('user', 'isLoggingIn');
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {

@@ -1,7 +1,7 @@
 import {ViewArticleState, viewArticleState} from './view-article.state';
 import {ViewArticleActions} from './view-article.actions';
 
-export const viewArticleReducer = (state: ViewArticleState = viewArticleState, action): ViewArticleState => {
+export function viewArticleReducer(state: ViewArticleState = viewArticleState, action): ViewArticleState {
   switch (action.type) {
     case ViewArticleActions.FETCH_ARTICLE:
       return {...state, isFetchingArticle: true};
@@ -12,4 +12,4 @@ export const viewArticleReducer = (state: ViewArticleState = viewArticleState, a
     default:
       return state;
   }
-};
+}

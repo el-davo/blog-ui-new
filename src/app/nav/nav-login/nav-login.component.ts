@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { NavActions } from '../nav.actions';
+import {Component} from '@angular/core';
+import {NavActions} from '../nav.actions';
+import {AppState} from '../../root.reducer';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-nav-login',

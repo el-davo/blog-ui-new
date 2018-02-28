@@ -14,7 +14,7 @@ export class ArticleRenderComponent {
   article$: Observable<Article>;
 
   constructor(private store: Store<AppState>) {
-    this.article$ = store.select(['viewArticle', 'article']);
+    this.article$ = store.select('viewArticle', 'article');
   }
 
 }
