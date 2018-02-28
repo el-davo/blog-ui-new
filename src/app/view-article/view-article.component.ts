@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {dispatch} from '@angular-redux/store';
-import {ViewArticleActions} from './view-article.actions';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ViewArticleActions } from './view-article.actions';
+import { AppState } from '../root.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-view-article',
@@ -10,13 +11,12 @@ import {ViewArticleActions} from './view-article.actions';
 })
 export class ViewArticleComponent {
 
-  constructor(private route: ActivatedRoute, private actions: ViewArticleActions) {
+  constructor(private store: Store<AppState>, private route: ActivatedRoute, private actions: ViewArticleActions) {
     this.route.params.subscribe(({articleId}) => this.fetchArticle(articleId));
   }
 
-  @dispatch()
   fetchArticle(articleId: string) {
-    return this.actions.fetchArticle(articleId);
+    this.store.dispatch(this.actions.fetchArticle(articleId));
   }
 
 }

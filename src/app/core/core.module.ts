@@ -1,14 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import * as reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import {LoadingComponent} from './loading/loading.component';
 import {EditArticleEpics} from '../edit-article/edit-article.epics';
 import {SideNavEpics} from '../side-nav/side-nav.epics';
 import {AddArticleEpics} from '../add-article/add-article.epics';
 import {ViewArticleEpics} from '../view-article/view-article.epics';
 import {UserEpics} from '../user/user.epics';
-import {NgRedux} from '@angular-redux/store';
 import {LandingEpics} from '../landing/landing.epics';
 import {NavEpics} from '../nav/nav.epics';
 import {combineEpics, createEpicMiddleware} from 'redux-observable';

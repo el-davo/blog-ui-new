@@ -1,21 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {select} from '@angular-redux/store';
-import {Observable} from 'rxjs/Observable';
-import {UserState} from '../user/user.state';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { UserState } from '../user/user.state';
+import { AppState } from '../root.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
 
-  @select('user') user$: Observable<UserState>;
+  user$: Observable<UserState>;
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
+    this.user$ = store.select('user');
   }
-
-  ngOnInit() {
-  }
-
 }

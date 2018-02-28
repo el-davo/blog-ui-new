@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Article} from '../../landing/landing.state';
-import {Observable} from 'rxjs/Observable';
-import {select} from '@angular-redux/store';
+import { Component, OnInit } from '@angular/core';
+import { Article } from '../../landing/landing.state';
+import { Observable } from 'rxjs/Observable';
+import { AppState } from '../../root.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-edit-article-preview',
@@ -10,9 +11,10 @@ import {select} from '@angular-redux/store';
 })
 export class EditArticlePreviewComponent implements OnInit {
 
-  @select(['editArticle', 'article']) article$: Observable<Article>;
+  article$: Observable<Article>;
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
+    this.article$ = store.select(['editArticle', 'article']);
   }
 
   ngOnInit() {

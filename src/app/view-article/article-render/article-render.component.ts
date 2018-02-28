@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
-import {select} from '@angular-redux/store';
-import {Observable} from 'rxjs/Observable';
-import {Article} from '../../landing/landing.state';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Article } from '../../landing/landing.state';
+import { AppState } from '../../root.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-article-render',
@@ -10,9 +11,10 @@ import {Article} from '../../landing/landing.state';
 })
 export class ArticleRenderComponent {
 
-  @select(['viewArticle', 'article']) article$: Observable<Article>;
+  article$: Observable<Article>;
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
+    this.article$ = store.select(['viewArticle', 'article']);
   }
 
 }

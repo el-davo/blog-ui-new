@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {dispatch, select} from '@angular-redux/store';
-import {EditArticleState} from '../edit-article.state';
-import {EditArticleActions} from '../edit-article.actions';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { EditArticleState } from '../edit-article.state';
+import { EditArticleActions } from '../edit-article.actions';
+import { AppState } from '../../root.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-edit-article-form',
@@ -11,39 +12,34 @@ import {EditArticleActions} from '../edit-article.actions';
 })
 export class EditArticleFormComponent {
 
-  @select('editArticle') editArticle$: Observable<EditArticleState>;
+  editArticle$: Observable<EditArticleState>;
 
-  constructor(private actions: EditArticleActions) {
+  constructor(private store: Store<AppState>, private actions: EditArticleActions) {
+    this.editArticle$ = this.store.select('editArticle');
   }
 
-  @dispatch()
   editArticle() {
-    return this.actions.update();
+    this.store.dispatch(this.actions.update());
   }
 
-  @dispatch()
   updateName(name: string) {
-    return this.actions.updateName(name);
+    this.store.dispatch(this.actions.updateName(name));
   }
 
-  @dispatch()
   updateSummary(summary: string) {
-    return this.actions.updateSummary(summary);
+    this.store.dispatch(this.actions.updateSummary(summary));
   }
 
-  @dispatch()
   updateImgUrl(imgUrl: string) {
-    return this.actions.updateImgUrl(imgUrl);
+    this.store.dispatch(this.actions.updateImgUrl(imgUrl));
   }
 
-  @dispatch()
   updatePublic(isPublic: boolean) {
-    return this.actions.updatePublic(isPublic);
+    this.store.dispatch(this.actions.updatePublic(isPublic));
   }
 
-  @dispatch()
   updateContent(content: string) {
-    return this.actions.updateContent(content);
+    this.store.dispatch(this.actions.updateContent(content));
   }
 
 }

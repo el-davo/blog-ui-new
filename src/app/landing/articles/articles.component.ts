@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {dispatch, select} from '@angular-redux/store';
-import {LandingActions} from '../landing.actions';
-import {Observable} from 'rxjs/Observable';
-import {LandingState} from '../landing.state';
+import { Component, OnInit } from '@angular/core';
+import { LandingActions } from '../landing.actions';
+import { Observable } from 'rxjs/Observable';
+import { LandingState } from '../landing.state';
 
 @Component({
   selector: 'app-articles',
@@ -11,14 +10,14 @@ import {LandingState} from '../landing.state';
 })
 export class ArticlesComponent implements OnInit {
 
-  @select('landing') landing$: Observable<LandingState>;
+  landing$: Observable<LandingState>;
 
-  constructor(private actions: LandingActions) {
+  constructor(private store: Store<AppState>, private actions: LandingActions) {
+    this.landing$ = this.store.select('landing');
   }
 
-  @dispatch()
   ngOnInit() {
-    return this.actions.fetchArticles()
+    this.store.dispatch(this.actions.fetchArticles());
   }
 
 }

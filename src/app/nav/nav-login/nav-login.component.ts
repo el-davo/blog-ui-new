@@ -1,6 +1,5 @@
-import {Component} from '@angular/core';
-import {NavActions} from '../nav.actions';
-import {dispatch} from '@angular-redux/store';
+import { Component } from '@angular/core';
+import { NavActions } from '../nav.actions';
 
 @Component({
   selector: 'app-nav-login',
@@ -9,10 +8,11 @@ import {dispatch} from '@angular-redux/store';
 })
 export class NavLoginComponent {
 
-  constructor(private navActions: NavActions) {
+  constructor(private store: Store<AppState>, private navActions: NavActions) {
   }
 
-  @dispatch()
-  showLoginModal = () => this.navActions.showLoginModal();
+  showLoginModal() {
+    this.store.dispatch(this.navActions.showLoginModal())
+  }
 
 }

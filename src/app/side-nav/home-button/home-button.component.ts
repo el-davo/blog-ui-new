@@ -1,6 +1,5 @@
-import {Component} from '@angular/core';
-import {SideNavActions} from '../side-nav.actions';
-import {dispatch} from '@angular-redux/store';
+import { Component } from '@angular/core';
+import { SideNavActions } from '../side-nav.actions';
 
 @Component({
   selector: 'app-home-button',
@@ -9,11 +8,10 @@ import {dispatch} from '@angular-redux/store';
 })
 export class HomeButtonComponent {
 
-  constructor(private actions: SideNavActions) {
+  constructor(private store: Store<AppState>, private actions: SideNavActions) {
   }
 
-  @dispatch()
   closeSideNav() {
-    return this.actions.hide();
+    this.store.dispatch(this.actions.hide());
   }
 }
