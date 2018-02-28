@@ -1,4 +1,3 @@
-import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import {TransferState, makeStateKey, Meta, Title} from '@angular/platform-browser';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -7,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {Article} from '../landing/landing.state';
 import {User} from '../user/user.state';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ArticlesService {
@@ -32,11 +32,12 @@ export class ArticlesService {
       }
     };
 
-    return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`)
-      .map(articles => {
+    return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
+      map(articles => {
         this.state.set(articlesKey, articles);
         return articles;
-      });
+      })
+    );
   }
 
   fetchArticles(): Observable<Article[]> {
@@ -59,8 +60,8 @@ export class ArticlesService {
       limit: 10
     };
 
-    return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`)
-      .map(articles => {
+    return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
+      map(articles => {
         this.state.set(articlesKey, articles);
         this.title.setTitle('el-davos blog');
         this.meta.addTag({property: 'description', content: 'el-davos blog'});
@@ -69,7 +70,8 @@ export class ArticlesService {
         this.meta.addTag({property: 'og:type', content: 'blog'});
 
         return articles;
-      });
+      })
+    );
   }
 
   fetchArticle(articleId: string): Observable<Article> {
@@ -81,8 +83,8 @@ export class ArticlesService {
       return of(articleState);
     }
 
-    return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`)
-      .map(article => {
+    return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`).pipe(
+      map(article => {
         this.state.set(articleStateKey, article);
         this.title.setTitle(article.name);
         this.meta.addTag({property: 'description', content: article.summary});
@@ -91,7 +93,8 @@ export class ArticlesService {
         this.meta.addTag({property: 'og:type', content: 'blog'});
 
         return article;
-      });
+      })
+    );
   }
 
   addArticle(user: User, article: Article): Observable<Article> {

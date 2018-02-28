@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {Article} from '../landing/landing.state';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
-import {mergeMap, withLatestFrom} from 'rxjs/operators';
+import {catchError, mergeMap, withLatestFrom} from 'rxjs/operators';
 import {ModuleState} from './add-article.reducer';
 
 @Injectable()
@@ -18,11 +18,13 @@ export class AddArticleEpics {
     select(([action, storeState]) => storeState),
     mergeMap((store) =>
       this.articlesService.addArticle(store.user.user, {...store.addArticle.article, userId: store.user.user.userId})
-        .mergeMap((newArticle: Article) => {
-          this.router.navigate(['article', 'edit', newArticle.id]);
-          return of(this.addArticleActions.addSuccess())
-        })
-        .catch(() => of(this.addArticleActions.addFail()))
+        .pipe(
+          mergeMap((newArticle: Article) => {
+            this.router.navigate(['article', 'edit', newArticle.id]);
+            return of(this.addArticleActions.addSuccess())
+          }),
+          catchError(() => of(this.addArticleActions.addFail()))
+        )
     ));
 
   constructor(private actions$: Actions,
