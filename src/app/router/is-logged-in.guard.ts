@@ -4,7 +4,9 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import {Observable} from 'rxjs/Observable';
 import {AppState} from '../root.reducer';
 import {Store} from '@ngrx/store';
-import {filter, mergeMap, take} from 'rxjs/operators';
+import {filter} from 'rxjs/operators/filter';
+import {mergeMap} from 'rxjs/operators/mergeMap';
+import {take} from 'rxjs/operators/take';
 
 @Injectable()
 export class IsLoggedInGuard implements CanActivate {

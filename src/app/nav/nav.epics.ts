@@ -4,7 +4,7 @@ import {MatDialog} from '@angular/material';
 import {LoginModalComponent} from './nav-login/login-modal/login-modal.component';
 import {Action} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs/operators/map';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()

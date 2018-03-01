@@ -7,7 +7,9 @@ import {User} from './user.state';
 import {NavActions} from '../nav/nav.actions';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
-import {catchError, mergeMap, withLatestFrom} from 'rxjs/operators';
+import {withLatestFrom} from 'rxjs/operators/withLatestFrom';
+import {catchError} from 'rxjs/operators/catchError';
+import {mergeMap} from 'rxjs/operators/mergeMap';
 import {AppState} from '../root.reducer';
 
 @Injectable()

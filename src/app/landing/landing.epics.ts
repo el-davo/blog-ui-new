@@ -3,7 +3,9 @@ import {Injectable} from '@angular/core';
 import {LandingActions} from './landing.actions';
 import {ArticlesService} from '../articles/articles.service';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {catchError, map, mergeMap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators/catchError';
+import {map} from 'rxjs/operators/map';
+import {mergeMap} from 'rxjs/operators/mergeMap';
 
 @Injectable()
 export class LandingEpics {
