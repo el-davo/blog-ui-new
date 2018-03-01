@@ -1,18 +1,19 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ShareModule} from '@ngx-share/core';
-import {ViewArticleComponent} from './view-article.component';
-import {ViewArticleEpics} from './view-article.epics';
-import {ViewArticleActions} from './view-article.actions';
-import {ArticleRenderComponent} from './article-render/article-render.component';
-import {ShareButtonModule} from '@ngx-share/button';
-import {ShareComponent} from './share/share.component';
-import {RouterModule, Routes} from '@angular/router';
-import {MarkdownModule} from 'ngx-markdown';
-import {MatCardModule} from '@angular/material';
-import {EffectsModule} from '@ngrx/effects';
-import {StoreModule} from '@ngrx/store';
-import {viewArticleReducer} from './view-article.reducer';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ShareModule } from '@ngx-share/core';
+import { ViewArticleComponent } from './view-article.component';
+import { ViewArticleEpics } from './view-article.epics';
+import { ViewArticleActions } from './view-article.actions';
+import { ArticleRenderComponent } from './article-render/article-render.component';
+import { ShareButtonModule } from '@ngx-share/button';
+import { ShareComponent } from './share/share.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MarkdownModule } from 'ngx-markdown';
+import { MatCardModule } from '@angular/material';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { viewArticleReducer } from './view-article.reducer';
+import { CoreModule } from '../core/core.module';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    CoreModule,
     MatCardModule,
     MarkdownModule.forRoot(),
     RouterModule.forChild(routes),

@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <mat-card>
+  <mat-card *ngIf="!(isFetchingArticle$ | async) else loading">
     <mat-card-header>
       <img mat-card-avatar [src]="(article$ | async)?.imgUrl" *ngIf="(article$ | async)?.imgUrl">
       <mat-card-title>{{(article$ | async)?.name}}</mat-card-title>
@@ -15,3 +15,7 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

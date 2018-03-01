@@ -1,5 +1,5 @@
-import {LandingComponent} from './landing/landing.component';
-import {IsLoggedInGuard} from './router/is-logged-in.guard';
+import { LandingComponent } from './landing/landing.component';
+import { IsLoggedInGuard } from './router/is-logged-in.guard';
 
 export const routes = [
   {
@@ -23,6 +23,10 @@ export const routes = [
   },
   {
     path: 'article/:articleId',
-    loadChildren: 'app/view-article/view-article.module#ViewArticleModule',
+    loadChildren: 'app/view-article/view-article.module#ViewArticleModule'
   },
+  {
+    path: '**',
+    redirectTo: '/'
+  }
 ];
