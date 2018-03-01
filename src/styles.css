@@ -1,4 +1,4 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 @import '~font-awesome/css/font-awesome.min.css';
 @import '~@ngx-share/button/styles/share-buttons.css';
 @import '~@ngx-share/button/styles/themes/circles/circles-dark-theme.css';
@@ -11,5 +11,5 @@ body {
 
 a {
   text-decoration: none;
-  color: #2A5DB0;
+  color: #E5C562;
 }
