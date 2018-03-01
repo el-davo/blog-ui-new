@@ -12,9 +12,11 @@ import { ModuleState } from '../view-article.reducer';
 export class ArticleRenderComponent {
 
   article$: Observable<Article>;
+  isFetchingArticle$: Observable<boolean>;
 
   constructor(private store: Store<ModuleState>) {
     this.article$ = store.select('viewArticle', 'article');
+    this.isFetchingArticle$ = store.select('viewArticle', 'isFetchingArticle');
   }
 
 }
