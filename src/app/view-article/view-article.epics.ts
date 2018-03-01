@@ -3,7 +3,9 @@ import {Injectable} from '@angular/core';
 import {ArticlesService} from '../articles/articles.service';
 import {ViewArticleActions} from './view-article.actions';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {catchError, map, mergeMap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators/catchError';
+import {map} from 'rxjs/operators/map';
+import {mergeMap} from 'rxjs/operators/mergeMap';
 
 @Injectable()
 export class ViewArticleEpics {

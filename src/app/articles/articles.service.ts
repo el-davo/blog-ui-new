@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {Article} from '../landing/landing.state';
 import {User} from '../user/user.state';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs/operators/map';
 
 @Injectable()
 export class ArticlesService {

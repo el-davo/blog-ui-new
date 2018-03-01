@@ -6,7 +6,9 @@ import {Router} from '@angular/router';
 import {Article} from '../landing/landing.state';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
-import {catchError, mergeMap, withLatestFrom} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators/catchError';
+import {mergeMap} from 'rxjs/operators/mergeMap';
+import {withLatestFrom} from 'rxjs/operators/withLatestFrom';
 import {ModuleState} from './add-article.reducer';
 
 @Injectable()

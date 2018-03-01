@@ -4,7 +4,9 @@ import {ArticlesService} from '../articles/articles.service';
 import {Article} from '../landing/landing.state';
 import {SideNavActions} from './side-nav.actions';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {catchError, map, mergeMap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators/catchError';
+import {map} from 'rxjs/operators/map';
+import {mergeMap} from 'rxjs/operators/mergeMap';
 
 @Injectable()
 export class SideNavEpics {
