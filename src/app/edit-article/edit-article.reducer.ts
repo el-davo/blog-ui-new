@@ -1,10 +1,9 @@
-import {editArticleState, EditArticleState} from './edit-article.state';
-import {EditArticleActions} from './edit-article.actions';
-import {UserState} from '../user/user.state';
+import { editArticleState, EditArticleState } from './edit-article.state';
+import { EditArticleActions } from './edit-article.actions';
+import { AppState } from '../root.reducer';
 
-export interface ModuleState {
+export interface ModuleState extends AppState {
   editArticle: EditArticleState;
-  user: UserState
 }
 
 export function editArticleReducer(state: EditArticleState = editArticleState, action): EditArticleState {

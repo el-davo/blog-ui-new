@@ -9,6 +9,7 @@ import {Article} from '../../landing.state';
 export class ArticleCardComponent implements OnInit {
 
   @Input() article: Article;
+  @Input() isLoggedIn: boolean;
 
   constructor() {
   }
