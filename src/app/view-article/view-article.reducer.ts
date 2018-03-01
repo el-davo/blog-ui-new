@@ -1,7 +1,8 @@
-import {ViewArticleState, viewArticleState} from './view-article.state';
-import {ViewArticleActions} from './view-article.actions';
+import { ViewArticleState, viewArticleState } from './view-article.state';
+import { ViewArticleActions } from './view-article.actions';
+import { AppState } from '../root.reducer';
 
-export interface ModuleState {
+export interface ModuleState extends AppState {
   viewArticle: ViewArticleState;
 }
 

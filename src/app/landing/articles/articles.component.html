@@ -5,6 +5,6 @@
        fxFlex.sm="50"
        fxFlex.md="25"
        fxFlex.lg="25">
-    <app-article-card [article]="article"></app-article-card>
+    <app-article-card [article]="article" [isLoggedIn]="isLoggedIn$ | async"></app-article-card>
   </div>
 </div>

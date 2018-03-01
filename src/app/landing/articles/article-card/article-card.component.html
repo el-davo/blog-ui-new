@@ -6,6 +6,11 @@
         <mat-card-title>{{article.name}}</mat-card-title>
         <mat-card-subtitle>{{article.summary}}</mat-card-subtitle>
       </mat-card-header>
+      <mat-card-actions *ngIf="isLoggedIn">
+        <button mat-button [routerLink]="['article', 'edit', article.id]"
+                (click)="$event.stopPropagation(); $event.preventDefault();">Edit
+        </button>
+      </mat-card-actions>
     </mat-card>
   </a>
 </div>
