@@ -1,12 +1,18 @@
 language: node_js
 node_js:
 - '8'
+services:
+- docker
 install:
 - yarn
 - yarn lint
 - yarn build
+- yarn e2e
 cache:
   yarn: true
+before_install:
+ - export DISPLAY=:99.0
+ - sh -e /etc/init.d/xvfb start
 deploy:
   provider: cloudfoundry
   api: api.run.pivotal.io

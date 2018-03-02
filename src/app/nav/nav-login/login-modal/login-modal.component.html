@@ -15,8 +15,8 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="closeModal()">Cancel</button>
-  <button mat-button (click)="login()">Login</button>
+  <button mat-button id="login-modal-cancel" (click)="closeModal()">Cancel</button>
+  <button mat-button id="login-modal-login" (click)="login()">Login</button>
 </mat-dialog-actions>
 
 <ng-template #spinner style="width: 100%; display: block;">
