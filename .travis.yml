@@ -15,8 +15,6 @@ before_install:
 install:
 - yarn
 - yarn lint
-- docker-compose --version
-- docker-compose up
 - yarn e2e
 - yarn build
 cache:
