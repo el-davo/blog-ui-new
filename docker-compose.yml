@@ -2,41 +2,8 @@ version: '3'
 
 services:
 
-  db:
-    image: mysql:latest
-    container_name: database.dev
-    command: mysqld --user=root --verbose
-    ports:
-      - 3306:3306
-    networks:
-      main:
-        aliases:
-          - db
-    environment:
-      MYSQL_DATABASE: "eldavo_blog"
-      MYSQL_USER: "test"
-      MYSQL_PASSWORD: "test"
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db
-    ports:
-      - 8001:80
-    environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
-      MYSQL_USERNAME: test
-      MYSQL_ROOT_PASSWORD: test
-
   eldavosblog-api:
     image: eldavosblog/api:latest
-    links:
-      - db
-    depends_on:
-      - db
     ports:
       - 3000:8000
     environment:
@@ -57,5 +24,4 @@ networks:
   main:
 
 volumes:
-  db:
   yarn:
