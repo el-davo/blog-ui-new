@@ -39,11 +39,8 @@ exports.config = {
     });
 
     const composePromise = compose.up({cwd: __dirname, log: true});
-    const waitForPromise = new Promise((resolve, reject) => {
-      waitOn(opts, err => err ? reject(err) : resolve());
-    });
 
-    return Promise.all([composePromise, waitForPromise]);
+    return Promise.all([composePromise]);
   },
   onComplete() {
     return compose.kill({cwd: __dirname, log: true});
