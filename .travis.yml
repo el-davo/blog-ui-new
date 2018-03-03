@@ -3,8 +3,9 @@ node_js:
 - '8'
 services:
 - docker
+addons:
+  chrome: stable
 install:
-- sudo apt update && sudo apt install google-chrome-stable
 - yarn
 - yarn lint
 - yarn e2e
