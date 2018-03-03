@@ -17,7 +17,7 @@
     "test:watch": "ng test -cc",
     "lint": "ng lint",
     "lint:fix": "npm run lint -- -fix",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e --environment e2e",
     "prod": "node ./dist/server.js",
     "workbox": "workbox generate:sw",
     "bundle:size": "ng build --prod --stats-json && webpack-bundle-analyzer dist/browser/stats.json"
@@ -62,6 +62,7 @@
     "@types/jasmine": "2.5.45",
     "codelyzer": "~3.0.1",
     "concurrently": "^3.5.0",
+    "docker-compose": "^0.4.3",
     "faker": "^4.1.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
@@ -77,9 +78,10 @@
     "rxjs-tslint-rules": "^3.14.0",
     "sw-precache": "^5.2.0",
     "ts-loader": "^2.3.7",
-    "ts-node": "~3.0.4",
+    "ts-node": "^5.0.1",
     "tslint": "~5.3.2",
     "typescript": "2.6.2",
+    "wait-on": "^2.1.0",
     "webpack-bundle-analyzer": "^2.9.1",
     "workbox-cli": "^2.1.2"
   }

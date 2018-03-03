@@ -1,65 +1,27 @@
-version: '2'
+version: '3'
 
 services:
 
-  db:
-    image: mysql
-    container_name: database.dev
-    command: mysqld --user=root --verbose
+  eldavosblog-api:
+    image: eldavosblog/api:latest
     ports:
-      - 3306:3306
-    networks:
-      main:
-        aliases:
-          - db
+      - 3000:8000
     environment:
-      MYSQL_DATABASE: "retro"
-      MYSQL_USER: "username"
-      MYSQL_PASSWORD: "password"
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-
-  redis:
-    image: redis
-    volumes:
-      - ./redis.conf:/usr/local/etc/redis/redis.conf
-    ports:
-      - 6379:6379
+      ADMIN_EMAIL: "test@test.com"
+      ADMIN_USERNAME: "test"
+      ADMIN_PASSWORD: "test"
+      DB_HOST: "db"
+      DB_USERNAME: "test"
+      DB_PASSWORD: "test"
     networks:
       main:
         aliases:
-          - redis
-
-  retro-api:
-    image: eahedav/retro-api:latest
-    depends_on:
-      - db
-    ports:
-      - 3000:3000
-    networks:
-      main:
-        aliases:
-          - retro-api
+          - eldavosblog-api
     command: >
-      /bin/bash -c "sleep 2; node ."
-
-  retro-gateway:
-    image: eahedav/retro-gateway:latest
-    depends_on:
-      - redis
-      - retro-api
-    ports:
-      - 8001:8080
-    networks:
-      main:
-        aliases:
-          - retro-gateway
-    command: >
-      /bin/bash -c "sleep 2; node ."
+      /bin/bash -c "sleep 5; node ."
 
 networks:
   main:
 
 volumes:
-  db:
   yarn:
