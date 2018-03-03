@@ -11,7 +11,7 @@ const opts = {
   ],
   delay: 1000,
   interval: 100,
-  timeout: 30000,
+  timeout: 120000,
   window: 1000,
 };
 
@@ -39,8 +39,11 @@ exports.config = {
     });
 
     const composePromise = compose.up({cwd: __dirname, log: true});
+    const waitForPromise = new Promise((resolve, reject) => {
+      waitOn(opts, err => err ? reject(err) : resolve());
+    });
 
-    return Promise.all([composePromise]);
+    return Promise.all([composePromise, waitForPromise]);
   },
   onComplete() {
     return compose.kill({cwd: __dirname, log: true});
