@@ -8,6 +8,7 @@ install:
 - yarn lint
 - yarn e2e
 - yarn build
+- sudo apt update && sudo apt install google-chrome-stable
 cache:
   yarn: true
 before_script:
