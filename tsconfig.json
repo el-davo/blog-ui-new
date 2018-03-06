@@ -17,6 +17,14 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@add-article/*": [
+        "app/add-article/*"
+      ],
+      "@landing/*": [
+        "app/landing/*"
+      ]
+    }
   }
 }

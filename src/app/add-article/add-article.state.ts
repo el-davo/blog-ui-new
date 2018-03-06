@@ -1,4 +1,4 @@
-import {Article} from '../landing/landing.state';
+import { Article } from '@landing/landing.state';
 
 export const addArticleState: AddArticleState = {
   isAddingArticle: false,
