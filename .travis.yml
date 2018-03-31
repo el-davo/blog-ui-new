@@ -8,7 +8,6 @@ addons:
 install:
 - yarn
 - yarn lint
-- yarn e2e
 - yarn build
 cache:
   yarn: true
