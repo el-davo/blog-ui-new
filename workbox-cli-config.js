@@ -14,13 +14,16 @@ module.exports = {
     handler: 'fastest'
   }, {
     urlPattern: /^https:\/\/fonts.googleapis.com\/.*/,
-    handler: 'networkFirst'
+    handler: 'fastest'
+  }, {
+    urlPattern: /^https:\/\/fonts.gstatic.com\/.*/,
+    handler: 'fastest'
   }, {
     urlPattern: /^https:\/\/ajax.cloudflare.com\/.*/,
-    handler: 'networkFirst'
+    handler: 'fastest'
   }, {
     urlPattern: /^https:\/\/s3-eu-west-1.amazonaws.com\/.*/,
-    handler: 'networkFirst'
+    handler: 'fastest'
   }],
   "clientsClaim": true,
   "skipWaiting": true
