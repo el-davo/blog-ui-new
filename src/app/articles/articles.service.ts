@@ -77,13 +77,18 @@ export class ArticlesService {
         const articleStateKey = makeStateKey(`article-${articleId}`);
         const articleState = this.state.get<Article>(articleStateKey, null);
 
+        console.log('Fetching article now');
+
         if (articleState) {
+            console.log('Already in the state like');
             this.title.setTitle(articleState.name);
             return of(articleState);
         }
 
         return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`).pipe(
             map(article => {
+                console.log('Got the article');
+
                 this.state.set(articleStateKey, article);
                 this.title.setTitle(article.name);
                 this.meta.addTag({property: 'description', content: article.summary});
