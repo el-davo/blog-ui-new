@@ -13,6 +13,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {viewArticleReducer} from './view-article.reducer';
 import {CoreModule} from '../core/core.module';
+import {ShareButtonsModule} from '@ngx-share/buttons';
 
 const routes: Routes = [
     {
@@ -29,7 +30,7 @@ const routes: Routes = [
         MarkdownModule.forRoot(),
         RouterModule.forChild(routes),
         ShareModule,
-        ShareButtonModule,
+        ShareButtonsModule,
         StoreModule.forFeature('viewArticle', viewArticleReducer),
         EffectsModule.forFeature([ViewArticleEpics])
     ],
