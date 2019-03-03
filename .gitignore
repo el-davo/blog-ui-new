@@ -4,7 +4,6 @@
 /dist
 /tmp
 /out-tsc
-/test_results
 
 # dependencies
 /node_modules
@@ -31,14 +30,14 @@
 /coverage
 /libpeerconnection.log
 npm-debug.log
+yarn-error.log
 testem.log
 /typings
-yarn-error.log
-
-# e2e
-/e2e/*.js
-/e2e/*.map
 
 # System Files
 .DS_Store
 Thumbs.db
+.idea/
+cypress/videos/
+cypress/screenshots/
+telepresence.log

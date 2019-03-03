@@ -1,111 +1,110 @@
 import {Injectable} from '@angular/core';
-import {TransferState, makeStateKey, Meta, Title} from '@angular/platform-browser';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import {makeStateKey, Meta, Title, TransferState} from '@angular/platform-browser';
+import {of} from 'rxjs';
 import {Article} from '../landing/landing.state';
+import {environment} from '../../environments/environment';
+import {map} from 'rxjs/operators';
 import {User} from '../user/user.state';
-import {map} from 'rxjs/operators/map';
 
 @Injectable()
 export class ArticlesService {
 
-  constructor(private http: HttpClient, private state: TransferState, private title: Title, private meta: Meta) {
-  }
-
-  fetchAllArticles(): Observable<Article[]> {
-    const articlesKey = makeStateKey('allArticles');
-    const articlesState = this.state.get(articlesKey, null as Article[]);
-
-    if (articlesState) {
-      return of(articlesState);
+    constructor(private http: HttpClient, private state: TransferState, private title: Title, private meta: Meta) {
     }
 
-    const filter = {
-      where: {
-        public: true
-      },
-      fields: {
-        content: false,
-        parsedContent: false
-      }
-    };
+    fetchAllArticles() {
+        const articlesKey = makeStateKey('allArticles');
+        const articlesState = this.state.get<Article[]>(articlesKey, null);
 
-    return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
-      map(articles => {
-        this.state.set(articlesKey, articles);
-        return articles;
-      })
-    );
-  }
+        if (articlesState) {
+            return of(articlesState);
+        }
 
-  fetchArticles(): Observable<Article[]> {
-    const articlesKey = makeStateKey('articles');
-    const articlesState = this.state.get(articlesKey, null as Article[]);
+        const filter = {
+            where: {
+                public: true
+            },
+            fields: {
+                content: false,
+                parsedContent: false
+            }
+        };
 
-    if (articlesState) {
-      this.title.setTitle('el-davos blog');
-      return of(articlesState);
+        return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
+            map(articles => {
+                this.state.set(articlesKey, articles);
+                return articles;
+            })
+        );
     }
 
-    const filter = {
-      where: {
-        public: true
-      },
-      fields: {
-        content: false,
-        parsedContent: false
-      },
-      limit: 10
-    };
+    fetchArticles() {
+        const articlesKey = makeStateKey('articles');
+        const articlesState = this.state.get<Article[]>(articlesKey, null);
 
-    return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
-      map(articles => {
-        this.state.set(articlesKey, articles);
-        this.title.setTitle('el-davos blog');
-        this.meta.addTag({property: 'description', content: 'el-davos blog'});
-        this.meta.addTag({property: 'og:title', content: 'el-davos blog'});
-        this.meta.addTag({property: 'og:site_name', content: 'el-davos blog'});
-        this.meta.addTag({property: 'og:type', content: 'blog'});
+        if (articlesState) {
+            this.title.setTitle('el-davos blog');
+            return of(articlesState);
+        }
 
-        return articles;
-      })
-    );
-  }
+        const filter = {
+            where: {
+                public: true
+            },
+            fields: {
+                content: false,
+                parsedContent: false
+            },
+            limit: 10
+        };
 
-  fetchArticle(articleId: string): Observable<Article> {
-    const articleStateKey = makeStateKey(`article-${articleId}`);
-    const articleState = this.state.get(articleStateKey, null as Article);
+        return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
+            map(articles => {
+                this.state.set(articlesKey, articles);
+                this.title.setTitle('el-davos blog');
+                this.meta.addTag({property: 'description', content: 'el-davos blog'});
+                this.meta.addTag({property: 'og:title', content: 'el-davos blog'});
+                this.meta.addTag({property: 'og:site_name', content: 'el-davos blog'});
+                this.meta.addTag({property: 'og:type', content: 'blog'});
 
-    if (articleState) {
-      this.title.setTitle(articleState.name);
-      return of(articleState);
+                return articles;
+            })
+        );
     }
 
-    return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`).pipe(
-      map(article => {
-        this.state.set(articleStateKey, article);
-        this.title.setTitle(article.name);
-        this.meta.addTag({property: 'description', content: article.summary});
-        this.meta.addTag({property: 'og:title', content: article.name});
-        this.meta.addTag({property: 'og:site_name', content: 'el-davos blog'});
-        this.meta.addTag({property: 'og:type', content: 'blog'});
+    fetchArticle(articleId: string) {
+        const articleStateKey = makeStateKey(`article-${articleId}`);
+        const articleState = this.state.get<Article>(articleStateKey, null);
 
-        return article;
-      })
-    );
-  }
+        if (articleState) {
+            this.title.setTitle(articleState.name);
+            return of(articleState);
+        }
 
-  addArticle(user: User, article: Article): Observable<Article> {
-    return this.http.post<Article>(`${environment.blogApi}/articles`, article, {
-      headers: new HttpHeaders().set('authorization', user.id)
-    });
-  }
+        return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`).pipe(
+            map(article => {
+                this.state.set(articleStateKey, article);
+                this.title.setTitle(article.name);
+                this.meta.addTag({property: 'description', content: article.summary});
+                this.meta.addTag({property: 'og:title', content: article.name});
+                this.meta.addTag({property: 'og:site_name', content: 'el-davos blog'});
+                this.meta.addTag({property: 'og:type', content: 'blog'});
 
-  editArticle(user: User, article: Article): Observable<Article> {
-    return this.http.put<Article>(`${environment.blogApi}/articles/${article.id}`, article, {
-      headers: new HttpHeaders().set('authorization', user.id)
-    });
-  }
+                return article;
+            })
+        );
+    }
+
+    addArticle(user: User, article: Article) {
+        return this.http.post<Article>(`${environment.blogApi}/articles`, article, {
+            headers: new HttpHeaders().set('authorization', user.id)
+        });
+    }
+
+    editArticle(user: User, article: Article) {
+        return this.http.put<Article>(`${environment.blogApi}/articles/${article.id}`, article, {
+            headers: new HttpHeaders().set('authorization', user.id)
+        });
+    }
 }

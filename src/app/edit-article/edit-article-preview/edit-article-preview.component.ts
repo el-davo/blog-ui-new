@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from '../../landing/landing.state';
-import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {ModuleState} from '../edit-article.reducer';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-edit-article-preview',

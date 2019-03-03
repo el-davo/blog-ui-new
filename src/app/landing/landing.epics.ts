@@ -1,27 +1,24 @@
-import {of} from 'rxjs/observable/of';
 import {Injectable} from '@angular/core';
-import {LandingActions} from './landing.actions';
+import * as actions from './landing.actions';
 import {ArticlesService} from '../articles/articles.service';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {catchError} from 'rxjs/operators/catchError';
-import {map} from 'rxjs/operators/map';
-import {mergeMap} from 'rxjs/operators/mergeMap';
+import {catchError, map, mergeMap} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Injectable()
 export class LandingEpics {
 
-  @Effect() login$ = this.actions$.pipe(
-    ofType(LandingActions.FETCH_ARTICLES),
-    mergeMap(() =>
-      this.articlesService.fetchArticles().pipe(
-        map(articles => this.landingActions.fetchArticlesSuccess(articles)),
-        catchError(() => of(this.landingActions.fetchArticlesFail())))
-    )
-  );
+    @Effect() login$ = this.actions$.pipe(
+        ofType(actions.FETCH_ARTICLES),
+        mergeMap(() =>
+            this.articlesService.fetchArticles().pipe(
+                map(articles => new actions.FetchArticlesSuccess(articles)),
+                catchError(() => of(new actions.FetchArticlesFail())))
+        )
+    );
 
-  constructor(private actions$: Actions,
-              private articlesService: ArticlesService,
-              private landingActions: LandingActions) {
-  }
+    constructor(private actions$: Actions,
+                private articlesService: ArticlesService) {
+    }
 
 }

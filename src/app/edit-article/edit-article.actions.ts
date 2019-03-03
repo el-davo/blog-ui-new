@@ -1,42 +1,94 @@
-import {Injectable} from '@angular/core';
 import {Article} from '../landing/landing.state';
+import {Action} from '@ngrx/store';
 
-@Injectable()
-export class EditArticleActions {
+export const FETCH = 'edit-article/FETCH';
+export const FETCH_SUCCESS = 'edit-article/FETCH_SUCCESS';
+export const FETCH_FAIL = 'edit-article/FETCH_FAIL';
 
-  static FETCH = 'edit-article/FETCH';
-  static FETCH_SUCCESS = 'edit-article/FETCH_SUCCESS';
-  static FETCH_FAIL = 'edit-article/FETCH_FAIL';
+export const UPDATE = 'edit-article/UPDATE';
+export const UPDATE_SUCCESS = 'edit-article/UPDATE_SUCCESS';
+export const UPDATE_FAIL = 'edit-article/UPDATE_FAIL';
 
-  static UPDATE = 'edit-article/UPDATE';
-  static UPDATE_SUCCESS = 'edit-article/UPDATE_SUCCESS';
-  static UPDATE_FAIL = 'edit-article/UPDATE_FAIL';
+export const UPDATE_NAME = 'edit-article/UPDATE_NAME';
+export const UPDATE_SUMMARY = 'edit-article/UPDATE_SUMMARY';
+export const UPDATE_CONTENT = 'edit-article/UPDATE_CONTENT';
+export const UPDATE_IMG_URL = 'edit-article/UPDATE_IMG_URL';
+export const UPDATE_PUBLIC = 'edit-article/UPDATE_PUBLIC';
 
-  static UPDATE_NAME = 'edit-article/UPDATE_NAME';
-  static UPDATE_SUMMARY = 'edit-article/UPDATE_SUMMARY';
-  static UPDATE_CONTENT = 'edit-article/UPDATE_CONTENT';
-  static UPDATE_IMG_URL = 'edit-article/UPDATE_IMG_URL';
-  static UPDATE_PUBLIC = 'edit-article/UPDATE_PUBLIC';
+export class Fetch implements Action {
+    readonly type = FETCH;
 
-  fetch = (articleId: string) => ({type: EditArticleActions.FETCH, articleId});
-
-  fetchSuccess = (article: Article) => ({type: EditArticleActions.FETCH_SUCCESS, article});
-
-  fetchFail = () => ({type: EditArticleActions.FETCH_FAIL});
-
-  update = () => ({type: EditArticleActions.UPDATE});
-
-  updateSuccess = () => ({type: EditArticleActions.UPDATE_SUCCESS});
-
-  updateFail = () => ({type: EditArticleActions.UPDATE_FAIL});
-
-  updateName = (name: string) => ({type: EditArticleActions.UPDATE_NAME, name});
-
-  updateSummary = (summary: string) => ({type: EditArticleActions.UPDATE_SUMMARY, summary});
-
-  updateContent = (content: string) => ({type: EditArticleActions.UPDATE_CONTENT, content});
-
-  updateImgUrl = (imgUrl: string) => ({type: EditArticleActions.UPDATE_IMG_URL, imgUrl});
-
-  updatePublic = (isPublic: boolean) => ({type: EditArticleActions.UPDATE_PUBLIC, isPublic});
+    constructor(public articleId: string) {
+    }
 }
+
+export class FetchSuccess implements Action {
+    readonly type = FETCH_SUCCESS;
+
+    constructor(public article: Article) {
+    }
+}
+
+export class FetchFail implements Action {
+    readonly type = FETCH_FAIL;
+}
+
+export class Update implements Action {
+    readonly type = UPDATE;
+}
+
+export class UpdateSuccess implements Action {
+    readonly type = UPDATE_SUCCESS;
+}
+
+export class UpdateFail implements Action {
+    readonly type = UPDATE_FAIL;
+}
+
+export class UpdateName implements Action {
+    readonly type = UPDATE_NAME;
+
+    constructor(public name: string) {
+    }
+}
+
+export class UpdateSummary implements Action {
+    readonly type = UPDATE_SUMMARY;
+
+    constructor(public summary: string) {
+    }
+}
+
+export class UpdateContent implements Action {
+    readonly type = UPDATE_CONTENT;
+
+    constructor(public content: string) {
+    }
+}
+
+export class UpdateImgUrl implements Action {
+    readonly type = UPDATE_IMG_URL;
+
+    constructor(public imgUrl: string) {
+    }
+}
+
+export class UpdatePublic implements Action {
+    readonly type = UPDATE_PUBLIC;
+
+    constructor(public isPublic: boolean) {
+    }
+}
+
+export type EditArticleActions =
+    | Fetch
+    | FetchSuccess
+    | FetchFail
+    | Update
+    | UpdateSuccess
+    | UpdateFail
+    | UpdateName
+    | UpdateSummary
+    | UpdateContent
+    | UpdateImgUrl
+    | UpdatePublic;

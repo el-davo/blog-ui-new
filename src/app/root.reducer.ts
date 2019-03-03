@@ -8,17 +8,17 @@ import {LandingState} from './landing/landing.state';
 import {SideNavState} from './side-nav/side-nav.state';
 
 export interface AppState {
-  nav: NavState,
-  user: UserState,
-  landing: LandingState,
-  sideNav: SideNavState
+    nav: NavState;
+    user: UserState;
+    landing: LandingState;
+    sideNav: SideNavState;
 }
 
 export function getRootReducer() {
-  return {
-    nav,
-    user,
-    landing,
-    sideNav
-  }
+    return {
+        nav,
+        user,
+        landing,
+        sideNav
+    };
 }

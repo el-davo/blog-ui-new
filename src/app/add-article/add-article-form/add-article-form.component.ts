@@ -1,44 +1,44 @@
 import {Component} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {AddArticleState} from '../add-article.state';
-import {AddArticleActions} from '../add-article.actions';
+import * as actions from '../add-article.actions';
 import {Store} from '@ngrx/store';
 import {ModuleState} from '../add-article.reducer';
 
 @Component({
-  selector: 'app-add-article-form',
-  templateUrl: './add-article-form.component.html',
-  styleUrls: ['./add-article-form.component.css']
+    selector: 'app-add-article-form',
+    templateUrl: './add-article-form.component.html',
+    styleUrls: ['./add-article-form.component.css']
 })
 export class AddArticleFormComponent {
 
-  addArticle$: Observable<AddArticleState>;
+    addArticle$: Observable<AddArticleState>;
 
-  constructor(private store: Store<ModuleState>, private actions: AddArticleActions) {
-    this.addArticle$ = this.store.select('addArticle');
-  }
+    constructor(private store: Store<ModuleState>) {
+        this.addArticle$ = this.store.select('addArticle');
+    }
 
-  addArticle() {
-    this.store.dispatch(this.actions.add());
-  }
+    addArticle() {
+        this.store.dispatch(new actions.Add());
+    }
 
-  updateName(name: string) {
-    this.store.dispatch(this.actions.updateName(name));
-  }
+    updateName(name: string) {
+        this.store.dispatch(new actions.UpdateName(name));
+    }
 
-  updateSummary(summary: string) {
-    this.store.dispatch(this.actions.updateSummary(summary));
-  }
+    updateSummary(summary: string) {
+        this.store.dispatch(new actions.UpdateSummary(summary));
+    }
 
-  updateImgUrl(imgUrl: string) {
-    this.store.dispatch(this.actions.updateImgUrl(imgUrl));
-  }
+    updateImgUrl(imgUrl: string) {
+        this.store.dispatch(new actions.UpdateImgUrl(imgUrl));
+    }
 
-  updatePublic(isPublic: boolean) {
-    this.store.dispatch(this.actions.updatePublic(isPublic));
-  }
+    updatePublic(isPublic: boolean) {
+        this.store.dispatch(new actions.UpdatePublic(isPublic));
+    }
 
-  updateContent(content: string) {
-    this.store.dispatch(this.actions.updateContent(content));
-  }
+    updateContent(content: string) {
+        this.store.dispatch(new actions.UpdateContent(content));
+    }
 }
