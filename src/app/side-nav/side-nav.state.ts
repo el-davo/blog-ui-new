@@ -9,5 +9,5 @@ export const sideNavState: SideNavState = {
 export interface SideNavState {
   showSideNav: boolean;
   isFetchingArticles: boolean;
-  articles: Article[]
+  articles: Article[];
 }

@@ -13,17 +13,17 @@ export const routes = [
   },
   {
     path: 'article/add',
-    loadChildren: 'app/add-article/add-article.module#AddArticleModule',
+    loadChildren: './add-article/add-article.module#AddArticleModule',
     canActivate: [IsLoggedInGuard]
   },
   {
     path: 'article/edit/:articleId',
-    loadChildren: 'app/edit-article/edit-article.module#EditArticleModule',
+    loadChildren: './edit-article/edit-article.module#EditArticleModule',
     canActivate: [IsLoggedInGuard]
   },
   {
     path: 'article/:articleId',
-    loadChildren: 'app/view-article/view-article.module#ViewArticleModule'
+    loadChildren: './view-article/view-article.module#ViewArticleModule'
   },
   {
     path: '**',

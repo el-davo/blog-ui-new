@@ -1,23 +1,23 @@
-import {Injectable} from '@angular/core';
 import {Article} from './landing.state';
+import {Action} from '@ngrx/store';
 
-@Injectable()
-export class LandingActions {
+export const FETCH_ARTICLES = 'landing/FETCH_ARTICLES';
+export const FETCH_ARTICLES_SUCCESS = 'landing/FETCH_ARTICLES_SUCCESS';
+export const FETCH_ARTICLES_FAIL = 'landing/FETCH_ARTICLES_FAIL';
 
-  static FETCH_ARTICLES = 'landing/FETCH_ARTICLES';
-  static FETCH_ARTICLES_SUCCESS = 'landing/FETCH_ARTICLES_SUCCESS';
-  static FETCH_ARTICLES_FAIL = 'landing/FETCH_ARTICLES_FAIL';
-
-  fetchArticles() {
-    return {type: LandingActions.FETCH_ARTICLES};
-  }
-
-  fetchArticlesSuccess(articles: Article[]) {
-    return {type: LandingActions.FETCH_ARTICLES_SUCCESS, articles};
-  }
-
-  fetchArticlesFail() {
-    return {type: LandingActions.FETCH_ARTICLES_FAIL};
-  }
-
+export class FetchArticles implements Action {
+    readonly type = FETCH_ARTICLES;
 }
+
+export class FetchArticlesSuccess implements Action {
+    readonly type = FETCH_ARTICLES_SUCCESS;
+
+    constructor(public articles: Article[]) {
+    }
+}
+
+export class FetchArticlesFail implements Action {
+    readonly type = FETCH_ARTICLES_FAIL;
+}
+
+export type LandingActions = | FetchArticles | FetchArticlesSuccess | FetchArticlesFail;

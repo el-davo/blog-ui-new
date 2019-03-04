@@ -1,22 +1,20 @@
-import {Injectable} from '@angular/core';
+import {Action} from '@ngrx/store';
 
-@Injectable()
-export class NavActions {
+export const HIDE_ALL_MODALS = 'nav/HIDE_ALL_MODALS';
 
-  static HIDE_ALL_MODALS = 'nav/HIDE_ALL_MODALS';
+export const SHOW_LOGIN_MODAL = 'nav/SHOW_LOGIN_MODAL';
+export const HIDE_LOGIN_MODAL = 'nav/HIDE_LOGIN_MODAL';
 
-  static SHOW_LOGIN_MODAL = 'nav/SHOW_LOGIN_MODAL';
-  static HIDE_LOGIN_MODAL = 'nav/HIDE_LOGIN_MODAL';
-
-  hideAllModals() {
-    return {type: NavActions.HIDE_ALL_MODALS};
-  }
-
-  showLoginModal() {
-    return {type: NavActions.SHOW_LOGIN_MODAL};
-  }
-
-  hideLoginModal() {
-    return {type: NavActions.HIDE_LOGIN_MODAL};
-  }
+export class HideAllModals implements Action {
+    readonly type = HIDE_ALL_MODALS;
 }
+
+export class ShowLoginModal implements Action {
+    readonly type = SHOW_LOGIN_MODAL;
+}
+
+export class HideLoginModal implements Action {
+    readonly type = HIDE_LOGIN_MODAL;
+}
+
+export type NavActions = | HideAllModals | ShowLoginModal | HideLoginModal;

@@ -1,27 +1,24 @@
-import {of} from 'rxjs/observable/of';
+import {of} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {ArticlesService} from '../articles/articles.service';
-import {ViewArticleActions} from './view-article.actions';
+import * as actions from './view-article.actions';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {catchError} from 'rxjs/operators/catchError';
-import {map} from 'rxjs/operators/map';
-import {mergeMap} from 'rxjs/operators/mergeMap';
+import {catchError, map, mergeMap} from 'rxjs/operators';
 
 @Injectable()
 export class ViewArticleEpics {
 
-  @Effect() fetchArticle$ = this.actions$.pipe(
-    ofType(ViewArticleActions.FETCH_ARTICLE),
-    mergeMap((action: any) =>
-      this.articlesService.fetchArticle(action.articleId).pipe(
-        map(article => this.viewArticleActions.fetchArticleSuccess(article)),
-        catchError(() => of(this.viewArticleActions.fetchArticleFail())))
-    )
-  );
+    @Effect() fetchArticle$ = this.actions$.pipe(
+        ofType(actions.FETCH_ARTICLE),
+        mergeMap((action: any) =>
+            this.articlesService.fetchArticle(action.articleId).pipe(
+                map(article => new actions.FetchArticleSuccess(article)),
+                catchError(() => of(new actions.FetchArticleFail())))
+        )
+    );
 
-  constructor(private actions$: Actions,
-              private articlesService: ArticlesService,
-              private viewArticleActions: ViewArticleActions) {
-  }
+    constructor(private actions$: Actions,
+                private articlesService: ArticlesService) {
+    }
 
 }

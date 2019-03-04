@@ -7,5 +7,5 @@ export const viewArticleState: ViewArticleState = {
 
 export interface ViewArticleState {
   isFetchingArticle: boolean;
-  article: Article
+  article: Article;
 }

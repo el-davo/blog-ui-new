@@ -1,45 +1,45 @@
 import {Component} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import {EditArticleState} from '../edit-article.state';
-import {EditArticleActions} from '../edit-article.actions';
+import * as actions from '../edit-article.actions';
 import {Store} from '@ngrx/store';
 import {ModuleState} from '../edit-article.reducer';
+import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-edit-article-form',
-  templateUrl: './edit-article-form.component.html',
-  styleUrls: ['./edit-article-form.component.css']
+    selector: 'app-edit-article-form',
+    templateUrl: './edit-article-form.component.html',
+    styleUrls: ['./edit-article-form.component.css']
 })
 export class EditArticleFormComponent {
 
-  editArticle$: Observable<EditArticleState>;
+    editArticle$: Observable<EditArticleState>;
 
-  constructor(private store: Store<ModuleState>, private actions: EditArticleActions) {
-    this.editArticle$ = this.store.select('editArticle');
-  }
+    constructor(private store: Store<ModuleState>) {
+        this.editArticle$ = this.store.select('editArticle');
+    }
 
-  editArticle() {
-    this.store.dispatch(this.actions.update());
-  }
+    editArticle() {
+        this.store.dispatch(new actions.Update());
+    }
 
-  updateName(name: string) {
-    this.store.dispatch(this.actions.updateName(name));
-  }
+    updateName(name: string) {
+        this.store.dispatch(new actions.UpdateName(name));
+    }
 
-  updateSummary(summary: string) {
-    this.store.dispatch(this.actions.updateSummary(summary));
-  }
+    updateSummary(summary: string) {
+        this.store.dispatch(new actions.UpdateSummary(summary));
+    }
 
-  updateImgUrl(imgUrl: string) {
-    this.store.dispatch(this.actions.updateImgUrl(imgUrl));
-  }
+    updateImgUrl(imgUrl: string) {
+        this.store.dispatch(new actions.UpdateImgUrl(imgUrl));
+    }
 
-  updatePublic(isPublic: boolean) {
-    this.store.dispatch(this.actions.updatePublic(isPublic));
-  }
+    updatePublic(isPublic: boolean) {
+        this.store.dispatch(new actions.UpdatePublic(isPublic));
+    }
 
-  updateContent(content: string) {
-    this.store.dispatch(this.actions.updateContent(content));
-  }
+    updateContent(content: string) {
+        this.store.dispatch(new actions.UpdateContent(content));
+    }
 
 }

@@ -5,45 +5,43 @@ import {AddArticleFormComponent} from './add-article-form/add-article-form.compo
 import {AddArticlePreviewComponent} from './add-article-preview/add-article-preview.component';
 import {RouterModule, Routes} from '@angular/router';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule,
-  MatSlideToggleModule
+    MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule,
+    MatSlideToggleModule
 } from '@angular/material';
 import {MarkdownModule} from 'ngx-markdown';
-import {AddArticleActions} from './add-article.actions';
 import {AddArticleEpics} from './add-article.epics';
 import {StoreModule} from '@ngrx/store';
 import {addArticleReducer} from './add-article.reducer';
 import {EffectsModule} from '@ngrx/effects';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AddArticleComponent
-  }
+    {
+        path: '',
+        component: AddArticleComponent
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatInputModule,
-    MarkdownModule.forRoot(),
-    RouterModule.forChild(routes),
-    StoreModule.forFeature('addArticle', addArticleReducer),
-    EffectsModule.forFeature([AddArticleEpics])
-  ],
-  declarations: [
-    AddArticleComponent,
-    AddArticleFormComponent,
-    AddArticlePreviewComponent
-  ],
-  providers: [
-    AddArticleActions,
-    AddArticleEpics
-  ]
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatSlideToggleModule,
+        MatButtonModule,
+        MatInputModule,
+        MarkdownModule.forRoot(),
+        RouterModule.forChild(routes),
+        StoreModule.forFeature('addArticle', addArticleReducer),
+        EffectsModule.forFeature([AddArticleEpics])
+    ],
+    declarations: [
+        AddArticleComponent,
+        AddArticleFormComponent,
+        AddArticlePreviewComponent
+    ],
+    providers: [
+        AddArticleEpics
+    ]
 })
 export class AddArticleModule {
 }

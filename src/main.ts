@@ -5,11 +5,9 @@ import {AppModule} from './app/app.module';
 import {environment} from './environments/environment';
 
 if (environment.production) {
-  enableProdMode();
+    enableProdMode();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
-
-  bootstrap();
+    platformBrowserDynamic().bootstrapModule(AppModule);
 });

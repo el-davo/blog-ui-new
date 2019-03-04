@@ -1,23 +1,38 @@
-import {Injectable} from '@angular/core';
 import {User} from './user.state';
+import {Action} from '@ngrx/store';
 
-@Injectable()
-export class UserActions {
+export const LOGIN = 'user/LOGIN';
+export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'user/LOGIN_FAIL';
 
-  static LOGIN = 'user/LOGIN';
-  static LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
-  static LOGIN_FAIL = 'user/LOGIN_FAIL';
+export const UPDATE_LOGIN_USERNAME = 'user/UPDATE_LOGIN_USERNAME';
+export const UPDATE_LOGIN_PASSWORD = 'user/UPDATE_LOGIN_PASSWORD';
 
-  static UPDATE_LOGIN_USERNAME = 'user/UPDATE_LOGIN_USERNAME';
-  static UPDATE_LOGIN_PASSWORD = 'user/UPDATE_LOGIN_PASSWORD';
+export class Login implements Action {
+    readonly type = LOGIN;
+}
 
-  login = () => ({type: UserActions.LOGIN});
+export class LoginSuccess implements Action {
+    readonly type = LOGIN_SUCCESS;
 
-  loginSuccess = (user: User) => ({type: UserActions.LOGIN_SUCCESS, user});
+    constructor(public user: User) {
+    }
+}
 
-  loginFail = () => ({type: UserActions.LOGIN_FAIL});
+export class LoginFail implements Action {
+    readonly type = LOGIN_FAIL;
+}
 
-  updateLoginUsername = (username: string) => ({type: UserActions.UPDATE_LOGIN_USERNAME, username});
+export class UpdateLoginUsername implements Action {
+    readonly type = UPDATE_LOGIN_USERNAME;
 
-  updateLoginPassword = (password: string) => ({type: UserActions.UPDATE_LOGIN_PASSWORD, password});
+    constructor(public username: string) {
+    }
+}
+
+export class UpdateLoginPassword implements Action {
+    readonly type = UPDATE_LOGIN_PASSWORD;
+
+    constructor(public password: string) {
+    }
 }
