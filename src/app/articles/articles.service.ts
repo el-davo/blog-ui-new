@@ -17,7 +17,10 @@ export class ArticlesService {
         const articlesKey = makeStateKey('allArticles');
         const articlesState = this.state.get<Article[]>(articlesKey, null);
 
+        console.log('Fetching Articles');
+
         if (articlesState) {
+            console.log('Articles in state');
             return of(articlesState);
         }
 
@@ -33,6 +36,7 @@ export class ArticlesService {
 
         return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
             map(articles => {
+                console.log('Got Articles');
                 this.state.set(articlesKey, articles);
                 return articles;
             })
