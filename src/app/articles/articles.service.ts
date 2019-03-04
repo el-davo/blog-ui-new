@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {makeStateKey, Meta, Title, TransferState} from '@angular/platform-browser';
-import {of} from 'rxjs';
-import {Article} from '../landing/landing.state';
-import {environment} from '../../environments/environment';
-import {map} from 'rxjs/operators';
-import {User} from '../user/user.state';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { makeStateKey, Meta, Title, TransferState } from '@angular/platform-browser';
+import { of } from 'rxjs';
+import { Article } from '../landing/landing.state';
+import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
+import { User } from '../user/user.state';
 
 @Injectable()
 export class ArticlesService {
@@ -17,10 +17,7 @@ export class ArticlesService {
         const articlesKey = makeStateKey('allArticles');
         const articlesState = this.state.get<Article[]>(articlesKey, null);
 
-        console.log('Fetching Articles');
-
         if (articlesState) {
-            console.log('Articles in state');
             return of(articlesState);
         }
 
@@ -36,7 +33,6 @@ export class ArticlesService {
 
         return this.http.get<Article[]>(`${environment.blogApi}/articles?filter=${JSON.stringify(filter)}`).pipe(
             map(articles => {
-                console.log('Got Articles');
                 this.state.set(articlesKey, articles);
                 return articles;
             })
@@ -81,17 +77,13 @@ export class ArticlesService {
         const articleStateKey = makeStateKey(`article-${articleId}`);
         const articleState = this.state.get<Article>(articleStateKey, null);
 
-        console.log('Fetching article now');
-
         if (articleState) {
-            console.log('Already in the state like');
             this.title.setTitle(articleState.name);
             return of(articleState);
         }
 
         return this.http.get<Article>(`${environment.blogApi}/articles/${articleId}`).pipe(
             map(article => {
-                console.log('Got the article');
 
                 this.state.set(articleStateKey, article);
                 this.title.setTitle(article.name);

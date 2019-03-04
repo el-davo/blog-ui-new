@@ -12,8 +12,8 @@ import {SideNavModule} from './side-nav/side-nav.module';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {MatSidenavModule} from '@angular/material';
-import {StoreModule} from '@ngrx/store';
-import {getRootReducer} from './root.reducer';
+import { ActionReducer, StoreModule } from '@ngrx/store';
+import { AppState, getRootReducer } from './root.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {NavEpics} from './nav/nav.epics';
 import {UserEpics} from './user/user.epics';
@@ -22,8 +22,13 @@ import {SideNavEpics} from './side-nav/side-nav.epics';
 import {environment} from '../environments/environment';
 import * as logRocket from 'logrocket';
 import {isPlatformBrowser} from '@angular/common';
+import { storeLogger } from 'ngrx-store-logger';
 
-export const metaReducers = environment.production ? [] : [];
+export function logger(reducer: ActionReducer<AppState>): any {
+  return storeLogger()(reducer);
+}
+
+export const metaReducers = environment.production ? [] : [logger];
 
 @NgModule({
   declarations: [
@@ -31,7 +36,7 @@ export const metaReducers = environment.production ? [] : [];
   ],
   imports: [
     RouterModule.forRoot(routes),
-    BrowserModule.withServerTransition({appId: 'blog-ui'}),
+    BrowserModule.withServerTransition({appId: 'blog'}),
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserTransferStateModule,
