@@ -4,17 +4,17 @@ import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    RouterModule,
-    LoadingComponent
-  ],
-  declarations: [
-    LoadingComponent
-  ],
-  providers: []
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        RouterModule,
+        LoadingComponent
+    ],
+    declarations: [
+        LoadingComponent
+    ],
+    providers: []
 })
 export class CoreModule {
 
