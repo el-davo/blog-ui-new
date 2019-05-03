@@ -22,5 +22,8 @@
   "exclude": [
     "cypress/**/*.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "enableIvy": "ivy-ngcc"
+  }
 }
