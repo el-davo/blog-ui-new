@@ -4,7 +4,6 @@ import {ShareModule} from '@ngx-share/core';
 import {ViewArticleComponent} from './view-article.component';
 import {ViewArticleEpics} from './view-article.epics';
 import {ArticleRenderComponent} from './article-render/article-render.component';
-import {ShareButtonModule} from '@ngx-share/button';
 import {ShareComponent} from './share/share.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MarkdownModule} from 'ngx-markdown';
