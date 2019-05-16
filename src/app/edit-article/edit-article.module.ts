@@ -8,7 +8,6 @@ import {
     MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule,
     MatSlideToggleModule
 } from '@angular/material';
-import {MarkdownModule} from 'ngx-markdown';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {editArticleReducer} from './edit-article.reducer';
@@ -29,7 +28,6 @@ const routes: Routes = [
         MatSlideToggleModule,
         MatButtonModule,
         MatInputModule,
-        MarkdownModule.forRoot(),
         RouterModule.forChild(routes),
         StoreModule.forFeature('editArticle', editArticleReducer),
         EffectsModule.forFeature([EditArticleEpics])

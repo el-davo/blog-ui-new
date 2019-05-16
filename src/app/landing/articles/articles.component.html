@@ -1,10 +1,3 @@
-<div fxFlex fxLayout="row wrap" fxLayoutAlign="start start">
-  <div *ngFor="let article of (landing$ | async)?.articles"
-       fxFlex="25"
-       fxFlex.xs="100"
-       fxFlex.sm="50"
-       fxFlex.md="25"
-       fxFlex.lg="25">
+<div *ngFor="let article of (landing$ | async)?.articles">
     <app-article-card [article]="article" [isLoggedIn]="isLoggedIn$ | async"></app-article-card>
-  </div>
 </div>

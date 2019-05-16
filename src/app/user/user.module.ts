@@ -7,7 +7,6 @@ import {UserEpics} from './user.epics';
   imports: [
     CommonModule
   ],
-  declarations: [],
   providers: [
     UserService,
     UserEpics

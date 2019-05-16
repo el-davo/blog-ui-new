@@ -6,7 +6,6 @@
       <mat-card-subtitle>{{(article$ | async)?.modified | date:'mediumDate'}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <markdown [data]="(article$ | async)?.content"></markdown>
 
       <br/>
       <br/>

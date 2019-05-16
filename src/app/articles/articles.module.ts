@@ -6,7 +6,6 @@ import {ArticlesService} from './articles.service';
   imports: [
     CommonModule
   ],
-  declarations: [],
   providers: [
     ArticlesService
   ]
