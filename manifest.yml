@@ -2,6 +2,7 @@ name: prod-blog-frontend
 instances: 1
 memory: 256M
 buildpack: nodejs_buildpack
+stack: cflinuxfs3
 command: node ./dist/server.js
 env:
   OPTIMIZE_MEMORY : true
